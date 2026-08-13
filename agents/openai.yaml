@@ -1,0 +1,4 @@
+interface:
+  display_name: "商机挖掘报告"
+  short_description: "聚合多维度数据，商机挖掘（市场+经营+数字化+工商，市场权重最高），产出带置信度的场景化评分报告（雷达图+综合评分）。"
+  default_prompt: "使用 $business-opportunity-report 生成「企业名称」的商机挖掘报告：聚合相关维度数据，产出 HTML + Markdown + JSON 报告。"
