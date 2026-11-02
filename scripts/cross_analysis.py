@@ -15,7 +15,6 @@ fabricated).
 """
 from __future__ import annotations
 
-import json
 from typing import Any, Dict, List, Mapping, Optional
 
 # --------------------------------------------------------------------------- #
@@ -148,7 +147,7 @@ def score_supply_capability(data: Mapping[str, Any]) -> Optional[float]:
         channel_count == 0 and supplier_count == 0):
         return None
 
-    s = 0
+    s: float = 0.0
     # 工厂产能评分（最高 50 分）
     if assembly_line:
         s += min(20, assembly_line * 4)
@@ -209,7 +208,7 @@ def score_financial_stability(data: Mapping[str, Any]) -> Optional[float]:
     if paid_rate is None and fin_n == 0 and not has_scale:
         return None
 
-    s = 0
+    s: float = 0.0
     # 实缴率评分（最高 40 分）
     if paid_rate is not None:
         if paid_rate >= 80:
@@ -246,6 +245,7 @@ def score_risk_isolation(data: Mapping[str, Any]) -> Optional[float]:
     if risk_score is None and not level_text and invest_n == 0 and defendant == 0 and penalties == 0 and not executed and not dishonest:
         return None
     # risk factor: prefer level text, fall back to raw score
+    risk_factor: float
     if "高" in level_text or "严重" in level_text:
         risk_factor = 28
     elif "中" in level_text:
@@ -798,7 +798,7 @@ def analyze(data: Mapping[str, Any]) -> Dict[str, Any]:
     return {
         "metrics": metrics,
         "insights": cross_insights,
-        "specialty_scores": {"items": [{"key": k, "label": l, "score": v} for k, l, v in scores["items"]],
+        "specialty_scores": {"items": [{"key": key, "label": label, "score": value} for key, label, value in scores["items"]],
                              "average": scores["average"]},
         "verdict": verdict,
         "section_specs": section_specs,
