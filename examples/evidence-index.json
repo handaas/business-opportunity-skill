@@ -17,7 +17,7 @@
         "business-review.json": "da78e99b030d740ff9a601064ec7dafb580e3cfc15dbf4a7942651b153d75955",
         "browser-check.json": "b4d5e89b8b552fe182c793cd26ffad59e3df08e860bc69ce7d13498ef978d5cb"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/02-cloud-migration.md"
+      "audit_record": "../test-records/live-replaced-20261027/02-cloud-migration.md"
     },
     {
       "skill": "business-opportunity-skill",
@@ -35,7 +35,7 @@
         "business-review.json": "daa8973bd3493b3a6a939722b6b15b243ecbe1723ede7c69ce8e4c2a48dcdb90",
         "browser-check.json": "65888804130c58c3d997f06363b9284c2c4b9d22091653d3ad94f241af11816a"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/03-rapid-hiring.md"
+      "audit_record": "../test-records/live-replaced-20261027/03-rapid-hiring.md"
     },
     {
       "skill": "business-opportunity-skill",
@@ -53,7 +53,7 @@
         "business-review.json": "61b790cb553a54811dd044072733cb6094b6bcd63829762a4946e35d62d5b468",
         "browser-check.json": "59e996ac4b54717b8d822910fe89527a7a1e1c3efd71a794dfb9808976ebab8e"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/05-reputation-screening.md"
+      "audit_record": "../test-records/live-replaced-20261027/05-reputation-screening.md"
     },
     {
       "skill": "business-opportunity-skill",
@@ -71,7 +71,7 @@
         "business-review.json": "ccf2f88819c2af9551cafa22af9b1324d9db7b2bfe8b3bc40d20fcafbff2de9b",
         "browser-check.json": "24cb4b1b588ebc5d767173932e4d6cf26e0518bcd39137e2e1578ad621ebd129"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/06-regional-retail.md"
+      "audit_record": "../test-records/live-replaced-20261027/06-regional-retail.md"
     },
     {
       "skill": "business-opportunity-skill",
@@ -89,7 +89,7 @@
         "business-review.json": "368c1d8972532464d5ac0065e867fd66ecb17819fc9ac0c87ff180f4c1ad5bab",
         "browser-check.json": "c46352e3ea80fb57348081772655249054b78f2f2e661efd9e908705fdcaba78"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/07-technology-growth.md"
+      "audit_record": "../test-records/live-replaced-20261027/07-technology-growth.md"
     }
   ]
 }
