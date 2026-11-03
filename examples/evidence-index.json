@@ -1,0 +1,95 @@
+{
+  "run_id": "live-replaced-20261027",
+  "cases": [
+    {
+      "skill": "business-opportunity-skill",
+      "id": "02-cloud-migration",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "4e30f6b777a4ae4cbba6a817858b3e18666901e263073aec2b7d126cf20bcd4d",
+        "report.html": "9b69bd5f64bbc0295f530079d73a4c9fa9e167ee40595f6ce321f00eb195c575",
+        "report.md": "8adc5545f15382cc81fd75cc75ab3050e9e1ef927cc32da577c70a5824655af7",
+        "calls.json": "a9d55f8439fd2a825baf3e743c0a8b49d8990d82f29c27663c45d7395df93259",
+        "result.json": "1121b21f68cbfaf6ad1c22155326d4ad0d63d0981505359e2578a0c0e550073c",
+        "audit.json": "8fe9796f805279182f547e17c11f4d732056cac2fb6d1e09437a1694fa56479d",
+        "acceptance.json": "c537686150c284d8d1edbaf2d1fa35249f9a0a5de4bb37404a526f7cca1a2c04",
+        "business-review.json": "da78e99b030d740ff9a601064ec7dafb580e3cfc15dbf4a7942651b153d75955",
+        "browser-check.json": "b4d5e89b8b552fe182c793cd26ffad59e3df08e860bc69ce7d13498ef978d5cb"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/02-cloud-migration.md"
+    },
+    {
+      "skill": "business-opportunity-skill",
+      "id": "03-rapid-hiring",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "28b29b6d72d0bccf7e4db2ec5676198c97edf1e2a7a81042f1fc80c0fd1f3f39",
+        "report.html": "b951601ec862058a2f19af931f26a23e3284b1a3e1ea557a65bbf0f869ec2e3e",
+        "report.md": "d5d595b787301c510f59d0750f0c7fc940fc77c329601dbcce5bed7e232cdf55",
+        "calls.json": "e2ce71f46b903cf77d9c2605433240f834c7e970ca660bf43f40ee95406639a3",
+        "result.json": "9473f6ef889239616030993335fce9f7acef05dde2cc8f323f12fa80c819a55f",
+        "audit.json": "b867b76117974e5eaaa6f4435469e02030c580dc55cbcbd1645316da7e67153c",
+        "acceptance.json": "6db9fb30c968cba247798e5cf97b8904da229c2a38355c7f530edd1861fcb2ca",
+        "business-review.json": "daa8973bd3493b3a6a939722b6b15b243ecbe1723ede7c69ce8e4c2a48dcdb90",
+        "browser-check.json": "65888804130c58c3d997f06363b9284c2c4b9d22091653d3ad94f241af11816a"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/03-rapid-hiring.md"
+    },
+    {
+      "skill": "business-opportunity-skill",
+      "id": "05-reputation-screening",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "41482fafcba8f9f62ca1230b7139b63de48a5d4d5816d10e97f0ef5823fedb48",
+        "report.html": "3eb9f017e2f577ff788c3d3445a626b84c2eeb28efc7bea849b726dae032308a",
+        "report.md": "4e9fdb2dc0c283c87b66f3abb27e937241fc47a427dc34beba661503acdcb039",
+        "calls.json": "81207b80d7f0bc2113630de9b79fefcc696329654bce0c8f054c64caff802b50",
+        "result.json": "47e12b44bbf9324654e1e6ab370d7f1fce2093bef5ec84e2103ee54dad2bc753",
+        "audit.json": "268692a3cdc4102d07e2424740708b82cef384ba4180a85880625819cb8d8c11",
+        "acceptance.json": "90bd78ecee34a390c003d1fbeaaf7d2ab6e627c0b9ba5e925900261540470087",
+        "business-review.json": "61b790cb553a54811dd044072733cb6094b6bcd63829762a4946e35d62d5b468",
+        "browser-check.json": "59e996ac4b54717b8d822910fe89527a7a1e1c3efd71a794dfb9808976ebab8e"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/05-reputation-screening.md"
+    },
+    {
+      "skill": "business-opportunity-skill",
+      "id": "06-regional-retail",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "1bbbf20d4d2994acffb34ed97b121c65b5f494496dd8f4d28a9bd3bba7efd161",
+        "report.html": "03342f5ffda676a143793f291f2bd74b824d84329138ff8b7ba98843e68ecd0f",
+        "report.md": "203471ac4ffa8242a4b08d237cd6324cc4c76b22889341261f637b750978ffd3",
+        "calls.json": "928f35480945e91c24d1a2895e2bda918e304468c55e049d9a9058cecd594373",
+        "result.json": "f39a8c64f237207676098c530ec1e0f9833bfcb83deecfff4153d15108f360e0",
+        "audit.json": "e77a95606b5d17e3e4799f9e8de92f114dfcf38be705e018f61aff27a3113ae3",
+        "acceptance.json": "1bf05747c06bba77ab0d0cc1485800512f020a864b95c603fb96e662d4945163",
+        "business-review.json": "ccf2f88819c2af9551cafa22af9b1324d9db7b2bfe8b3bc40d20fcafbff2de9b",
+        "browser-check.json": "24cb4b1b588ebc5d767173932e4d6cf26e0518bcd39137e2e1578ad621ebd129"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/06-regional-retail.md"
+    },
+    {
+      "skill": "business-opportunity-skill",
+      "id": "07-technology-growth",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "1895c568f928261b85776b5b932354699de4628332746269a3be25cc2c2cc878",
+        "report.html": "71a8a226a6eb67d9db0d6ebc973e5c1bc93f19f02f9d5ca62fee1d168786a07e",
+        "report.md": "f8070409bcca20f8cbf85612c8264e9050ac88744b7c7632852829f7a8a721a1",
+        "calls.json": "ac075fa69c916d4914544bfc66989b1ecb2b04d1deb28c91ac5682510819980a",
+        "result.json": "72354bdd9d1d986e6953b61b0cefa3e0f44bdcff6d134e0c8d4fe82236967c98",
+        "audit.json": "d8a603b000827c423ad3e52226fdfd7d8dcd4c301f745bbba2092d268130a32c",
+        "acceptance.json": "2cd848b935e399a1916e8841d3b17582778bcefe05e08171a141b97a6ea74beb",
+        "business-review.json": "368c1d8972532464d5ac0065e867fd66ecb17819fc9ac0c87ff180f4c1ad5bab",
+        "browser-check.json": "c46352e3ea80fb57348081772655249054b78f2f2e661efd9e908705fdcaba78"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/07-technology-growth.md"
+    }
+  ]
+}

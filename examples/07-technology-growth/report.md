@@ -1,0 +1,570 @@
+# 小米科技有限责任公司 企业商机线索报告
+
+> 本报告对「小米科技有限责任公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率
+
+_生成时间：2026-10-27T10:42:08+08:00_
+
+## 一、查询对象与口径
+
+- 匹配对象：小米科技有限责任公司
+- 匹配方式：单企业商机事实观察（不评分）
+- 数据范围：有效覆盖 6/6 个主题域；生成时间 2026-10-27T10:42:08+08:00
+- 局限说明：缺口：司法与合规风险（本 skill 未查询）。中标业绩不等同采购需求，招聘和云资产不等同预算；司法与合规风险未评估。
+
+## 二、数据总览
+
+| 指标 | 数值 | 说明 |
+| --- | --- | --- |
+| 标讯记录总量 | 50 | 含投标/中标公开记录，不等同采购需求 |
+| 中标标的统计合计 | 9 | 供应方历史中标分布，不能替代买方采购意向 |
+| 当前招聘公开数 | 3726 | 招聘活跃线索，不代表采购计划 |
+| 近三月招聘公开数 | 3726 | 招聘接口口径，需结合采集时点 |
+| 有效域名数 | 1427 | 云资产触点，不代表数字化成熟度或预算 |
+| 舆情统计总量 | 5904 | 接口情感分类合计 |
+| 负面舆情统计 | 874 | 舆情风险线索，不作法律定性 |
+
+## 三、核心分析
+
+### 主体与工商基础
+
+| 字段 | 内容 |
+| --- | --- |
+| 企业名称 | 小米科技有限责任公司 |
+| 统一社会信用代码 | 91110108551385082Q |
+| 法定代表人 | 雷军 |
+| 企业类型 | 有限责任公司(自然人投资或控股) |
+| 行业 | 科学研究和技术服务业 / 科技推广和应用服务业 / 其他科技推广服务业 |
+| 注册资本 | 人民币 14.77亿 |
+| 实缴资本 | - |
+| 成立日期 | 2010-03-03 |
+| 经营状态 | 营业 |
+| 注册地址 | 北京市海淀区西二旗中路33号院6号楼6层006号 |
+| 经营范围 | 一般项目技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广;货物进出口;技术进出口;进出口代理;通讯设备销售;厨具卫具及日用杂品批发;厨具卫具及日用杂品零售;个人卫生用品销售;卫生用品和一次性使用医疗用品销售;日用杂品销售;日用百货销售;日用品销售;化妆品批发;化妆品零售;第一类医疗器械销售;第二类医疗器械销售;玩具销售;体育用品及器材零售;体育用品及器材批发;文具用品零售;文具用品批发;鞋帽批发;鞋帽零售;服装服饰批发;服装服饰零售;钟表销售;眼镜销售(不含隐形眼镜);针纺织品销售;家用电器销售;日用家电零售;家具销售;礼品花卉销售;农作物种子经营(仅限不再分装的包装种子);照相机及器材销售;照相器材及望远镜批发;照相器材及望远镜零售;工艺美术品及收藏品零售(象牙及其制品除外);工艺美术品及礼仪用品销售(象牙及其制品除外);计算机软硬件及辅助设备零售;计算机软硬件及辅助设备批发… |
+
+### 经营公开线索
+
+| 字段 | 内容 |
+| --- | --- |
+| scale | {
+  "staff": "10000人以上",
+  "turnover": "10亿以上"
+} |
+| financing_count | 7 |
+| financing_list | [
+  {
+    "financingAmount": "370.53亿港元",
+    "financingSeries": "IPO",
+    "financingTime": "2018-07-01",
+    "investorList": [
+      "公开发行"
+    ]
+  },
+  {
+    "financingAmount": "$未透露",
+    "financingSeries": "战略投资",
+    "financingTime": "2015-04-27"
+  },
+  {
+    "financingAmount": "11亿美元",
+    "financingSeries": "E轮及以后",
+    "financingTime": "2014-12-29",
+    "investorList": [
+      "云锋基金",
+      "PSG",
+      "DST Global",
+      "厚朴投资",
+      "全明星投资All-Stars Investment"
+    ]
+  },
+  {
+    "financingAmount": "1亿美元",
+    "financingSeries": "D轮",
+    "financingTime": "2013-09-12",
+    "investorList": [
+      "DST Global"
+    ]
+  },
+  {
+    "financingAmount": "2.16亿美元",
+    "financingSeries": "C轮",
+    "financingTime": "2012-06-01",
+    "investorList": [
+      "Temasek淡马锡",
+      "DST Global"
+    ]
+  },
+  {
+    "financingAmount": "9000万美元",
+    "financingSeries": "B轮",
+    "financingTime": "2011-12-01",
+    "investorList": [
+      "顺为资本",
+      "Temasek淡马锡",
+      "IDG资本",
+      "启明创投",
+      "高通QualcommVentures",
+      "五源资本"
+    ]
+  },
+  {
+    "financingAmount": "4100万美元",
+    "financingSeries": "A轮",
+    "financingTime": "2011-07-01",
+    "investorList": [
+      "顺为资本",
+      "IDG资本",
+      "启明创投",
+      "五源资本"
+    ]
+  }
+] |
+| trends | {
+  "isStaffExpandIn3Month": 1,
+  "isStaffExpandIn6Month": 1,
+  "isStaffExpandIn12Month": 1,
+  "isExpandNewCityIn6Month": 1,
+  "isExpandNewCityIn12Month": 1,
+  "isDiffAreaWinBidIn12Month": 1
+} |
+| rankings | [
+  {
+    "rankingListName": "2023中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2023,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 38,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2023中国新经济企业500强",
+    "rankingListType": "新经济500强榜单",
+    "rankingListYear": 2023,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业评价协会",
+    "rank": 34,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2022中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2022,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 30,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2022年中国新经济企业500强",
+    "rankingListType": "新经济500强榜单",
+    "rankingListYear": 2022,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "36氪研究院",
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2021年中国企业联合会、中国企业家协会联合发布中国企业500强",
+    "rankingListType": "中国500强榜单",
+    "rankingListYear": 2021,
+    "rankingListLevel": "中国500强",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 95,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2021中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2021,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 36,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2020中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2020,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 36,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2019中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2019,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 40,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  },
+  {
+    "rankingListName": "2018中国制造业企业500强",
+    "rankingListType": "制造业500强榜单",
+    "rankingListYear": 2018,
+    "rankingListLevel": "国家级",
+    "rankingListInstitution": "中国企业联合会、中国企业家协会",
+    "rank": 54,
+    "rankingListCompanyName": "小米科技有限责任公司"
+  }
+] |
+
+### 采购与中标事实（分列）
+
+| 字段 | 内容 |
+| --- | --- |
+| win_subjects | [
+  {
+    "count": 5,
+    "percent": 14.71,
+    "subjectMatter": "录播教室"
+  },
+  {
+    "count": 1,
+    "percent": 2.94,
+    "subjectMatter": "计算机实训室设备"
+  },
+  {
+    "count": 1,
+    "percent": 2.94,
+    "subjectMatter": "实验室设备"
+  },
+  {
+    "count": 1,
+    "percent": 2.94,
+    "subjectMatter": "专用设备"
+  },
+  {
+    "count": 1,
+    "percent": 2.94,
+    "subjectMatter": "手术麻醉系统"
+  }
+] |
+| win_areas | [
+  {
+    "area": "广西壮族自治区",
+    "count": 3
+  },
+  {
+    "area": "辽宁省",
+    "count": 1
+  },
+  {
+    "area": "宁夏回族自治区",
+    "count": 5
+  },
+  {
+    "area": "四川省",
+    "count": 1
+  },
+  {
+    "area": "山西省",
+    "count": 1
+  },
+  {
+    "area": "北京",
+    "count": 5
+  },
+  {
+    "area": "甘肃省",
+    "count": 10
+  },
+  {
+    "area": "安徽省",
+    "count": 2
+  },
+  {
+    "area": "云南省",
+    "count": 1
+  },
+  {
+    "area": "西藏自治区",
+    "count": 1
+  },
+  {
+    "area": "重庆",
+    "count": 1
+  },
+  {
+    "area": "河南省",
+    "count": 1
+  },
+  {
+    "area": "湖北省",
+    "count": 1
+  },
+  {
+    "area": "湖南省",
+    "count": 1
+  },
+  {
+    "area": "广东省",
+    "count": 1
+  }
+] |
+| win_amounts | [
+  {
+    "percent": 24.0,
+    "range": "10万以下",
+    "count": 6
+  },
+  {
+    "percent": 32.0,
+    "range": "10万~50万",
+    "count": 8
+  },
+  {
+    "percent": 24.0,
+    "range": "50万~100万",
+    "count": 6
+  },
+  {
+    "percent": 20.0,
+    "range": "100万~500万",
+    "count": 5
+  }
+] |
+| win_trends | [
+  {
+    "year": "2026",
+    "count": 4
+  },
+  {
+    "year": "2025",
+    "count": 1
+  },
+  {
+    "year": "2024",
+    "count": 1
+  },
+  {
+    "year": "2021",
+    "count": 2
+  },
+  {
+    "year": "2020",
+    "count": 7
+  },
+  {
+    "year": "2019",
+    "count": 9
+  },
+  {
+    "year": "2018",
+    "count": 5
+  },
+  {
+    "year": "2017",
+    "count": 3
+  },
+  {
+    "year": "2016",
+    "count": 4
+  }
+] |
+| bidding_total | 50 |
+
+### 舆情情感统计
+
+| 字段 | 内容 |
+| --- | --- |
+| sentiment | {
+  "negative": 874,
+  "neutral": 3726,
+  "positive": 1262,
+  "unknown": 42
+} |
+| sentiment_trend | [
+  {
+    "month": "2025-06",
+    "stats": {
+      "negative": 0,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2025-07",
+    "stats": {
+      "negative": 1,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2025-08",
+    "stats": {
+      "negative": 1,
+      "positive": 0
+    }
+  },
+  {
+    "month": "2025-09",
+    "stats": {
+      "negative": 0,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2025-10",
+    "stats": {
+      "negative": 0,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2026-01",
+    "stats": {
+      "negative": 3,
+      "positive": 4
+    }
+  },
+  {
+    "month": "2026-04",
+    "stats": {
+      "negative": 0,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2026-05",
+    "stats": {
+      "negative": 1,
+      "positive": 1
+    }
+  },
+  {
+    "month": "2026-06",
+    "stats": {
+      "negative": 4,
+      "positive": 0
+    }
+  },
+  {
+    "month": "2026-07",
+    "stats": {
+      "negative": 2,
+      "positive": 6
+    }
+  },
+  {
+    "month": "2026-08",
+    "stats": {
+      "negative": 0,
+      "positive": 2
+    }
+  },
+  {
+    "month": "2026-10",
+    "stats": {
+      "negative": 2,
+      "positive": 0
+    }
+  }
+] |
+
+### 云资产与数字触点
+
+| 字段 | 内容 |
+| --- | --- |
+| effective_domain_num | 1427 |
+| sub_domain_num | 3602 |
+| cloud_server_num | 1000台以上 |
+| cloud_level | 5000W以上 |
+| cloud_servers | [
+  "金山云",
+  "白山云",
+  "海外",
+  "Amazon",
+  "verycdn",
+  "快网",
+  "云端智度",
+  "移动",
+  "akamai",
+  "网宿",
+  "又拍云",
+  "七牛",
+  "Akamai",
+  "天翼云",
+  "Azure",
+  "Zenlayer",
+  "世纪互联",
+  "联通",
+  "腾讯云",
+  "靠谱云",
+  "Cloudflare",
+  "其他",
+  "电信",
+  "AWS",
+  "火山云",
+  "电讯盈科",
+  "阿里云",
+  "华为",
+  "广电",
+  "google",
+  "360",
+  "蓝汛"
+] |
+| has_cdn | 1 |
+| has_cloud_storage | 1 |
+| has_overseas | 0 |
+| cdn_servers | [
+  "金山云",
+  "白山云",
+  "Amazon",
+  "网宿",
+  "verycdn",
+  "阿里云",
+  "腾讯云",
+  "快网",
+  "云端智度",
+  "又拍云",
+  "七牛",
+  "其他",
+  "天翼云",
+  "Akamai",
+  "360",
+  "蓝汛"
+] |
+
+### 招聘公开线索
+
+| 字段 | 内容 |
+| --- | --- |
+| current | 3726 |
+| last_3m | 3726 |
+| avg_salary | 10073.49323042 |
+
+## 四、代表性记录
+
+| 维度 | 关键记录 |
+| --- | --- |
+| 标讯记录总量 | 50（含投标/中标公开记录，不等同采购需求） |
+| 中标标的统计合计 | 9（供应方历史中标分布，不能替代买方采购意向） |
+| 当前招聘公开数 | 3726（招聘活跃线索，不代表采购计划） |
+| 近三月招聘公开数 | 3726（招聘接口口径，需结合采集时点） |
+| 有效域名数 | 1427（云资产触点，不代表数字化成熟度或预算） |
+| 舆情统计总量 | 5904（接口情感分类合计） |
+| 负面舆情统计 | 874（舆情风险线索，不作法律定性） |
+
+## 五、特征与洞察
+
+### 中标业绩边界
+- 证据：中标标的统计项 5、标讯记录总量 50。
+- 解读：仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。
+
+### 扩张活动交叉线索
+- 证据：经营趋势命中 6 项；当前招聘 3726、近三月招聘 3726。
+- 解读：经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。
+
+### 云资产触点
+- 证据：有效域名 1427，云服务器区间 1000台以上。
+- 解读：说明存在可观测云资产触点；不能据此评价数字化成熟度、迁移意向或预算。
+
+### 负面舆情提示
+- 证据：情感统计中负面 874 条，总量 5904 条。
+- 解读：应人工复核负面样本、时间和相关性；本报告未查询司法/合规风险，不作信用或法律结论。
+
+## 六、数据口径与来源
+
+- 数据来源：6 MCP
+- 生成时间：2026-10-27T10:42:08+08:00
+- 模式：真实查询

@@ -1,0 +1,36 @@
+{
+  "id": "07-technology-growth",
+  "verdict": "acceptable",
+  "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+  "checks": [
+    {
+      "expectation": "主体解析无歧义",
+      "status": "pass",
+      "evidence": "通过：subject.enterprise=小米科技有限责任公司、resolved=True、resolve_reason=工商基础信息中的企业名称和统一社会信用代码已返回；工商章节字段数=11。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=小米科技有限责任公司，resolved=True；metrics[标讯记录总量=50；中标标的统计合计=9；当前招聘公开数=3726；近三月招聘公开数=3726；有效域名数=1427；舆情统计总量=5904；负面舆情统计=874]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/50)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(9/9)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/53)；enterprise:enterprise_get_enterprise_main_person_info=data(5/5)]"
+    },
+    {
+      "expectation": "增长动能引用经营和招聘证据",
+      "status": "pass",
+      "evidence": "通过：招聘工具状态=data/data，招聘章节={\"current\": 3753, \"last_3m\": 3753, \"avg_salary\": 10073.5575539269, \"welfare\": []}；当前招聘公开数=3753、近三月招聘公开数=3753。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=小米科技有限责任公司，resolved=True；metrics[标讯记录总量=50；中标标的统计合计=9；当前招聘公开数=3726；近三月招聘公开数=3726；有效域名数=1427；舆情统计总量=5904；负面舆情统计=874]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/50)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(9/9)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/53)；enterprise:enterprise_get_enterprise_main_person_info=data(5/5)]"
+    },
+    {
+      "expectation": "云资产条目不被当作预算证明",
+      "status": "pass",
+      "evidence": "通过：cloudmigration_cloud_assets=data，云资产字段数=10；有效域名数=1427；HTML/MD均呈现当前口径限制=True。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=小米科技有限责任公司，resolved=True；metrics[标讯记录总量=50；中标标的统计合计=9；当前招聘公开数=3726；近三月招聘公开数=3726；有效域名数=1427；舆情统计总量=5904；负面舆情统计=874]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/50)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(9/9)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/53)；enterprise:enterprise_get_enterprise_main_person_info=data(5/5)]"
+    },
+    {
+      "expectation": "商机等级和证据强度匹配",
+      "status": "pass",
+      "evidence": "通过：abstract=本报告对「小米科技有限责任公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率。；评分指标=无对应指标；coverage=100%，insights=[{\"feature\": \"中标业绩边界\", \"evidence\": \"中标标的统计项 5、标讯记录总量 50。\", \"interpretation\": \"仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。\"}, {\"feature\": \"扩张活动交叉线索\", \"evidence\": \"经营趋势命中 6 项；当前招聘 3753、近三月招聘 3753。\", \"interpretation\": \"经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。\"}, {\"feature\": \"云资产触点\", \"evidence\": \"有效域名 1427，云服务器区间 1000台以上。\", \"interpretation\": \"说明存在可观测云资产触点；不能据此评价数字化成熟度、迁移意向或预算。\"}, {\"feature\": \"负面舆情；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=小米科技有限责任公司，resolved=True；metrics[标讯记录总量=50；中标标的统计合计=9；当前招聘公开数=3726；近三月招聘公开数=3726；有效域名数=1427；舆情统计总量=5904；负面舆情统计=874]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/50)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(9/9)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/53)；enterprise:enterprise_get_enterprise_main_person_info=data(5/5)]"
+    }
+  ],
+  "issues": [],
+  "evidence_binding": {
+    "report.json": "1895c568f928261b85776b5b932354699de4628332746269a3be25cc2c2cc878",
+    "report.html": "71a8a226a6eb67d9db0d6ebc973e5c1bc93f19f02f9d5ca62fee1d168786a07e",
+    "report.md": "f8070409bcca20f8cbf85612c8264e9050ac88744b7c7632852829f7a8a721a1",
+    "calls.json": "ac075fa69c916d4914544bfc66989b1ecb2b04d1deb28c91ac5682510819980a",
+    "result.json": "72354bdd9d1d986e6953b61b0cefa3e0f44bdcff6d134e0c8d4fe82236967c98",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

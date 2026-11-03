@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "skill": "business-opportunity-skill",
+  "case_id": "03-rapid-hiring",
+  "title": "扩张型企业销售线索",
+  "invocation_id": "1793068915750765000",
+  "provenance": {
+    "integrator_id": "683e574805537ace146cc05e",
+    "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+    "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+    "scenario_sha256": "5eab2d8fb25751cf63826dffb1f3a7b103102c1c2c30ef969b6b140c019a3684",
+    "skill_source_hashes": {
+      "scripts/common.py": "9804a5bc2750a09c5629b7e8cfb0ad062d4631739ef940e8ee0708cf043e8807",
+      "scripts/compose_direct.py": "6091ea2b41f5c37d0b9dcc7dc196e6ef9fda4daa034206b18b25b9a023f3fd42",
+      "scripts/compose_fusion_report.py": "4382c5124d28b5062c5fb575a530c6643cbfd240e4ffcb78ff8b1b82aed7bed9",
+      "scripts/cross_analysis.py": "a3b52b7b46008ffc892bdd917a269c2ac7ec8c74d61dcdc3ae8b18cd3802cc9f",
+      "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+      "scripts/mcp_orchestration.py": "598b6be8f084afdbe896bded7e19d5fbbf37a8cdcc621a2f76f49df211644fd1",
+      "scripts/multi_mcp_client.py": "17e090bd878074e2e8df93424c26c6c671536dfc7c6cfbb453c3220b8a477e81",
+      "scripts/render_report.py": "34d4ca7db5317065d4d286eb540f0afcc1c5ea4d2a0e975df81ca2a578a98ea3"
+    },
+    "upstream_source_hashes": {
+      "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+      "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+      "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+      "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+      "cloudmigration-mcp-server": "59cd5a8336dda21bbac7a1e65160d708f34bc43ecba499e1240b107243071385",
+      "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+    },
+    "upstream_dependency_hashes": {
+      "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+      "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+      "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+      "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+      "cloudmigration-mcp-server/server/mcp_server.py": "59cd5a8336dda21bbac7a1e65160d708f34bc43ecba499e1240b107243071385",
+      "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+    }
+  },
+  "source_changed_during_run": false,
+  "started_at": "2026-10-27T10:41:55+08:00",
+  "elapsed_seconds": 10.546,
+  "returncode": 0,
+  "exception_type": null,
+  "command": "python3 business-opportunity-skill/scripts/compose_fusion_report.py --enterprise '比亚迪股份有限公司' --keyword-type name --output business-opportunity-skill/output/live-replaced-20261027/03-rapid-hiring/report.json --report-output business-opportunity-skill/output/live-replaced-20261027/03-rapid-hiring/report.html",
+  "transport": "local MCP servers via loopback streamable-http",
+  "cache_used": false,
+  "call_count": 15,
+  "successful_data_calls": 14,
+  "empty_calls": 1,
+  "failed_calls": 0,
+  "checks": {
+    "issues": [],
+    "warnings": [],
+    "coverage_pct": 100,
+    "subject": {
+      "enterprise": "比亚迪股份有限公司",
+      "match_raw": "比亚迪股份有限公司",
+      "keywordType": "name",
+      "resolved": true,
+      "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+    },
+    "title": "比亚迪股份有限公司 企业商机线索报告",
+    "data_mode": "live_mcp",
+    "metrics": [
+      {
+        "label": "标讯记录总量",
+        "value": "1000",
+        "hint": "含投标/中标公开记录，不等同采购需求"
+      },
+      {
+        "label": "中标标的统计合计",
+        "value": "9",
+        "hint": "供应方历史中标分布，不能替代买方采购意向"
+      },
+      {
+        "label": "当前招聘公开数",
+        "value": "126960",
+        "hint": "招聘活跃线索，不代表采购计划"
+      },
+      {
+        "label": "近三月招聘公开数",
+        "value": "126960",
+        "hint": "招聘接口口径，需结合采集时点"
+      },
+      {
+        "label": "有效域名数",
+        "value": "127",
+        "hint": "云资产触点，不代表数字化成熟度或预算"
+      },
+      {
+        "label": "舆情统计总量",
+        "value": "5131",
+        "hint": "接口情感分类合计"
+      },
+      {
+        "label": "负面舆情统计",
+        "value": "156",
+        "hint": "舆情风险线索，不作法律定性"
+      }
+    ],
+    "quality_report": {
+      "total_sections": 6,
+      "populated_sections": 6,
+      "empty_sections": 0,
+      "coverage_pct": 100
+    },
+    "unregistered_tools": [],
+    "checks": {
+      "json_html_markdown": true,
+      "explicit_live": true,
+      "tool_calls_recorded": 15,
+      "offline_scripts": true,
+      "independent_rerender": true,
+      "offline_browser": true
+    }
+  },
+  "status": "passed",
+  "source_hashes": {
+    "scripts/common.py": "9804a5bc2750a09c5629b7e8cfb0ad062d4631739ef940e8ee0708cf043e8807",
+    "scripts/compose_direct.py": "6091ea2b41f5c37d0b9dcc7dc196e6ef9fda4daa034206b18b25b9a023f3fd42",
+    "scripts/compose_fusion_report.py": "4382c5124d28b5062c5fb575a530c6643cbfd240e4ffcb78ff8b1b82aed7bed9",
+    "scripts/cross_analysis.py": "a3b52b7b46008ffc892bdd917a269c2ac7ec8c74d61dcdc3ae8b18cd3802cc9f",
+    "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+    "scripts/mcp_orchestration.py": "598b6be8f084afdbe896bded7e19d5fbbf37a8cdcc621a2f76f49df211644fd1",
+    "scripts/multi_mcp_client.py": "17e090bd878074e2e8df93424c26c6c671536dfc7c6cfbb453c3220b8a477e81",
+    "scripts/render_report.py": "34d4ca7db5317065d4d286eb540f0afcc1c5ea4d2a0e975df81ca2a578a98ea3"
+  },
+  "technical_status": "passed",
+  "audited_at": "2026-10-27T11:12:56+08:00",
+  "evidence_binding": {
+    "report.json": "28b29b6d72d0bccf7e4db2ec5676198c97edf1e2a7a81042f1fc80c0fd1f3f39",
+    "report.html": "b951601ec862058a2f19af931f26a23e3284b1a3e1ea557a65bbf0f869ec2e3e",
+    "report.md": "d5d595b787301c510f59d0750f0c7fc940fc77c329601dbcce5bed7e232cdf55",
+    "calls.json": "e2ce71f46b903cf77d9c2605433240f834c7e970ca660bf43f40ee95406639a3",
+    "result.json": "9473f6ef889239616030993335fce9f7acef05dde2cc8f323f12fa80c819a55f",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

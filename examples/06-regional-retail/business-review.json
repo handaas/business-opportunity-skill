@@ -1,0 +1,36 @@
+{
+  "id": "06-regional-retail",
+  "verdict": "acceptable",
+  "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+  "checks": [
+    {
+      "expectation": "云资产与招聘信号相互独立",
+      "status": "pass",
+      "evidence": "通过：cloudmigration_cloud_assets=data，云资产字段数=10；有效域名数=20；HTML/MD均呈现当前口径限制=True。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=永辉超市股份有限公司，resolved=True；metrics[标讯记录总量=281；中标标的统计合计=14；当前招聘公开数=1323；近三月招聘公开数=1323；有效域名数=20；舆情统计总量=3904；负面舆情统计=717]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_enterprise_rankings=data(10/33)；operation:operation_insight_company_trends=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/281)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/84)；enterprise:enterprise_get_enterprise_main_person_info=data(10/10)]"
+    },
+    {
+      "expectation": "经营趋势不被新闻数量替代",
+      "status": "pass",
+      "evidence": "通过：generated_at=2026-10-26T18:03:06+08:00；招聘章节={\"current\": 1323, \"last_3m\": 1323, \"avg_salary\": 8187.6161021955, \"welfare\": []}；当前招聘公开数=1323、近三月招聘公开数=1323；趋势/章节注=。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=永辉超市股份有限公司，resolved=True；metrics[标讯记录总量=281；中标标的统计合计=14；当前招聘公开数=1323；近三月招聘公开数=1323；有效域名数=20；舆情统计总量=3904；负面舆情统计=717]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_enterprise_rankings=data(10/33)；operation:operation_insight_company_trends=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/281)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/84)；enterprise:enterprise_get_enterprise_main_person_info=data(10/10)]"
+    },
+    {
+      "expectation": "商机触点注明推断依据",
+      "status": "pass",
+      "evidence": "通过：subject.resolved=True；quality={\"total_sections\": 6, \"populated_sections\": 6, \"empty_sections\": 0, \"coverage_pct\": 100}；metrics=[{\"label\": \"标讯记录总量\", \"value\": \"281\", \"hint\": \"含投标/中标公开记录，不等同采购需求\"}, {\"label\": \"中标标的统计合计\", \"value\": \"14\", \"hint\": \"供应方历史中标分布，不能替代买方采购意向\"}, {\"label\": \"当前招聘公开数\", \"value\": \"1323\", \"hint\": \"招聘活跃线索，不代表采购计划\"}, {\"label\": \"近三月招聘公开数\", \"value\": \"1323\", \"hint\": \"招聘接口口径，需结合采集时点\"}, {\"label\": \"有效域名数\", \"value\": \"20\", \"hint\": \"云资产触点，不代表数字化成熟度或预算\"}, {\"label\": \"舆情统计总量\", \"value\": \"3904\",；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=永辉超市股份有限公司，resolved=True；metrics[标讯记录总量=281；中标标的统计合计=14；当前招聘公开数=1323；近三月招聘公开数=1323；有效域名数=20；舆情统计总量=3904；负面舆情统计=717]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_enterprise_rankings=data(10/33)；operation:operation_insight_company_trends=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/281)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/84)；enterprise:enterprise_get_enterprise_main_person_info=data(10/10)]"
+    },
+    {
+      "expectation": "数据缺口明确列出",
+      "status": "pass",
+      "evidence": "通过：subject.resolved=True；quality={\"total_sections\": 6, \"populated_sections\": 6, \"empty_sections\": 0, \"coverage_pct\": 100}；metrics=[{\"label\": \"标讯记录总量\", \"value\": \"281\", \"hint\": \"含投标/中标公开记录，不等同采购需求\"}, {\"label\": \"中标标的统计合计\", \"value\": \"14\", \"hint\": \"供应方历史中标分布，不能替代买方采购意向\"}, {\"label\": \"当前招聘公开数\", \"value\": \"1323\", \"hint\": \"招聘活跃线索，不代表采购计划\"}, {\"label\": \"近三月招聘公开数\", \"value\": \"1323\", \"hint\": \"招聘接口口径，需结合采集时点\"}, {\"label\": \"有效域名数\", \"value\": \"20\", \"hint\": \"云资产触点，不代表数字化成熟度或预算\"}, {\"label\": \"舆情统计总量\", \"value\": \"3904\",；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=永辉超市股份有限公司，resolved=True；metrics[标讯记录总量=281；中标标的统计合计=14；当前招聘公开数=1323；近三月招聘公开数=1323；有效域名数=20；舆情统计总量=3904；负面舆情统计=717]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_enterprise_rankings=data(10/33)；operation:operation_insight_company_trends=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/281)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/84)；enterprise:enterprise_get_enterprise_main_person_info=data(10/10)]"
+    }
+  ],
+  "issues": [],
+  "evidence_binding": {
+    "report.json": "1bbbf20d4d2994acffb34ed97b121c65b5f494496dd8f4d28a9bd3bba7efd161",
+    "report.html": "03342f5ffda676a143793f291f2bd74b824d84329138ff8b7ba98843e68ecd0f",
+    "report.md": "203471ac4ffa8242a4b08d237cd6324cc4c76b22889341261f637b750978ffd3",
+    "calls.json": "928f35480945e91c24d1a2895e2bda918e304468c55e049d9a9058cecd594373",
+    "result.json": "f39a8c64f237207676098c530ec1e0f9833bfcb83deecfff4153d15108f360e0",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

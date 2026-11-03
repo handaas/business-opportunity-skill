@@ -1,0 +1,36 @@
+{
+  "id": "02-cloud-migration",
+  "verdict": "acceptable",
+  "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+  "checks": [
+    {
+      "expectation": "云资产数据与经营规模分开",
+      "status": "pass",
+      "evidence": "通过：cloudmigration_cloud_assets=data，云资产字段数=10；有效域名数=35；HTML/MD均呈现当前口径限制=True。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=海尔智家股份有限公司，resolved=True；metrics[标讯记录总量=595；中标标的统计合计=24；当前招聘公开数=750；近三月招聘公开数=750；有效域名数=35；舆情统计总量=3174；负面舆情统计=46]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[news:news_bigdata_news_stats=data；cloudmigration:cloudmigration_cloud_assets=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/595)；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_business_scale=data；operation:operation_insight_enterprise_rankings=data(10/32)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/60)；enterprise:enterprise_get_enterprise_main_person_info=data(13/13)]"
+    },
+    {
+      "expectation": "数字化程度结论有返回字段支撑",
+      "status": "pass",
+      "evidence": "通过：cloudmigration_cloud_assets=data，云资产字段数=10；有效域名数=35；HTML/MD均呈现当前口径限制=True。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=海尔智家股份有限公司，resolved=True；metrics[标讯记录总量=595；中标标的统计合计=24；当前招聘公开数=750；近三月招聘公开数=750；有效域名数=35；舆情统计总量=3174；负面舆情统计=46]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[news:news_bigdata_news_stats=data；cloudmigration:cloudmigration_cloud_assets=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/595)；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_business_scale=data；operation:operation_insight_enterprise_rankings=data(10/32)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/60)；enterprise:enterprise_get_enterprise_main_person_info=data(13/13)]"
+    },
+    {
+      "expectation": "招聘岗位不被直接解释为采购计划",
+      "status": "pass",
+      "evidence": "通过：标讯记录总量=595、中标标的统计合计=24；采购统计调用=empty、中标统计调用=data；报告章节=dict。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=海尔智家股份有限公司，resolved=True；metrics[标讯记录总量=595；中标标的统计合计=24；当前招聘公开数=750；近三月招聘公开数=750；有效域名数=35；舆情统计总量=3174；负面舆情统计=46]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[news:news_bigdata_news_stats=data；cloudmigration:cloudmigration_cloud_assets=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/595)；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_business_scale=data；operation:operation_insight_enterprise_rankings=data(10/32)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/60)；enterprise:enterprise_get_enterprise_main_person_info=data(13/13)]"
+    },
+    {
+      "expectation": "商机建议标注推断性质",
+      "status": "pass",
+      "evidence": "通过：abstract=本报告对「海尔智家股份有限公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率。；评分指标=无对应指标；coverage=100%，insights=[{\"feature\": \"中标业绩边界\", \"evidence\": \"中标标的统计项 5、标讯记录总量 595。\", \"interpretation\": \"仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。\"}, {\"feature\": \"扩张活动交叉线索\", \"evidence\": \"经营趋势命中 5 项；当前招聘 750、近三月招聘 750。\", \"interpretation\": \"经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。\"}, {\"feature\": \"云资产触点\", \"evidence\": \"有效域名 35，云服务器区间 500-1000台。\", \"interpretation\": \"说明存在可观测云资产触点；不能据此评价数字化成熟度、迁移意向或预算。\"}, {\"feature\": \"负面舆情提；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=海尔智家股份有限公司，resolved=True；metrics[标讯记录总量=595；中标标的统计合计=24；当前招聘公开数=750；近三月招聘公开数=750；有效域名数=35；舆情统计总量=3174；负面舆情统计=46]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[news:news_bigdata_news_stats=data；cloudmigration:cloudmigration_cloud_assets=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/595)；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_business_scale=data；operation:operation_insight_enterprise_rankings=data(10/32)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/60)；enterprise:enterprise_get_enterprise_main_person_info=data(13/13)]"
+    }
+  ],
+  "issues": [],
+  "evidence_binding": {
+    "report.json": "4e30f6b777a4ae4cbba6a817858b3e18666901e263073aec2b7d126cf20bcd4d",
+    "report.html": "9b69bd5f64bbc0295f530079d73a4c9fa9e167ee40595f6ce321f00eb195c575",
+    "report.md": "8adc5545f15382cc81fd75cc75ab3050e9e1ef927cc32da577c70a5824655af7",
+    "calls.json": "a9d55f8439fd2a825baf3e743c0a8b49d8990d82f29c27663c45d7395df93259",
+    "result.json": "1121b21f68cbfaf6ad1c22155326d4ad0d63d0981505359e2578a0c0e550073c",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

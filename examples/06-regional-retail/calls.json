@@ -1,0 +1,887 @@
+[
+  {
+    "tool": "cloudmigration_cloud_assets",
+    "domain": "cloudmigration",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.216,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "cloudConsumptionScale",
+      "cloudServerList",
+      "cloudServerNumInterval",
+      "cloudServiceProviderRatio",
+      "effectiveSubDomainList",
+      "effectiveSubDomainNum",
+      "hasOverseasCloudService",
+      "subDomainList",
+      "subDomainNum",
+      "cdnServerNum"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "cloudServiceProviderRatio[0].ratio",
+        "value": 0.2222222222222222
+      },
+      {
+        "path": "cloudServiceProviderRatio[1].ratio",
+        "value": 0.5555555555555556
+      },
+      {
+        "path": "cloudServiceProviderRatio[2].ratio",
+        "value": 0.2222222222222222
+      },
+      {
+        "path": "effectiveSubDomainNum",
+        "value": 20
+      },
+      {
+        "path": "hasOverseasCloudService",
+        "value": 0
+      },
+      {
+        "path": "subDomainNum",
+        "value": 29
+      },
+      {
+        "path": "cdnServerNum",
+        "value": 0
+      }
+    ],
+    "response_sha256": "589aa5da7ed614b8bd63a3adfa9a676f1e0cedd8bf531481a3b938bc72aa74fd"
+  },
+  {
+    "tool": "news_bigdata_news_stats",
+    "domain": "news",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.237,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "newsSentimentStats",
+      "newsSentimentTrend",
+      "sentimentLabelList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "newsSentimentStats.negative",
+        "value": 717
+      },
+      {
+        "path": "newsSentimentStats.neutral",
+        "value": 2541
+      },
+      {
+        "path": "newsSentimentStats.positive",
+        "value": 624
+      },
+      {
+        "path": "newsSentimentStats.unknown",
+        "value": 22
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.positive",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.negative",
+        "value": 2
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.negative",
+        "value": 3
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.negative",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.negative",
+        "value": 5
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.positive",
+        "value": 0
+      }
+    ],
+    "response_sha256": "de2c79f2846d85099809316de8abbfa2c2b7e12f490dc265ec2b918cad775d05"
+  },
+  {
+    "tool": "recruitment_trend",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.457,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingCurrentCount",
+        "value": 1323.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 1323.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 300
+      },
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 20389
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 8187.6161021955
+      }
+    ],
+    "response_sha256": "4e400451113722ef9fc38e981a74a002408432fbb3ae8df12f6b63d621775229"
+  },
+  {
+    "tool": "recruitment_employer_profile",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.459,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "benefitList",
+      "businessTags",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary",
+      "recruitingBusinessKeyWords",
+      "recruitingCities",
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingPositionKeyWords",
+      "recruitingTypes",
+      "truncatedFields"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 20389
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 8187.6161021955
+      },
+      {
+        "path": "recruitingCurrentCount",
+        "value": 1323.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 1323.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 300
+      },
+      {
+        "path": "truncatedFields.businessTags.total",
+        "value": 65
+      },
+      {
+        "path": "truncatedFields.businessTags.returned",
+        "value": 50
+      },
+      {
+        "path": "truncatedFields.recruitingCities.total",
+        "value": 188
+      },
+      {
+        "path": "truncatedFields.recruitingCities.returned",
+        "value": 50
+      }
+    ],
+    "response_sha256": "bd7f115dc7a04bbdc3062d4b2c327f236ea1872c5239684072af8385dd937120"
+  },
+  {
+    "tool": "operation_insight_business_scale",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.728,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "annualTurnover",
+      "enterpriseScale"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "7c05a4d3bcd474b7963faa2bcced12f8a2be0b1d908d323dfe3d894da56b4354"
+  },
+  {
+    "tool": "operation_insight_financing_info",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.733,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "fpFinancingCount",
+      "fpFinancingList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "fpFinancingCount",
+        "value": 11
+      }
+    ],
+    "response_sha256": "23696c9200dd6ecd9d59684e4cbf303b6a5b34cfb86510872895159e3f1e6265"
+  },
+  {
+    "tool": "operation_insight_enterprise_rankings",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name",
+      "pageSize": 10
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.744,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 10,
+    "reported_total": 33,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].rankingListYear",
+        "value": 2024
+      },
+      {
+        "path": "resultList[0].rank",
+        "value": 246
+      },
+      {
+        "path": "resultList[1].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[1].rank",
+        "value": 218
+      },
+      {
+        "path": "resultList[2].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[2].rank",
+        "value": 273
+      },
+      {
+        "path": "resultList[3].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[3].rank",
+        "value": 103
+      },
+      {
+        "path": "resultList[4].rankingListYear",
+        "value": 2022
+      },
+      {
+        "path": "resultList[4].rank",
+        "value": 258
+      },
+      {
+        "path": "total",
+        "value": 33
+      }
+    ],
+    "response_sha256": "d4516665a08268b41f55a5fcf8ed02a91e89c171186d8b69e22db29496f896f8"
+  },
+  {
+    "tool": "operation_insight_company_trends",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.745,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "nYearLeaseAboutToExpire",
+      "isFoundSubsidiaryIn3Month",
+      "isExpandNewCityIn3Month",
+      "isExpandNewCityIn6Month",
+      "isExpandNewCityIn12Month"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "nYearLeaseAboutToExpire",
+        "value": 4
+      },
+      {
+        "path": "isFoundSubsidiaryIn3Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn3Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn6Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn12Month",
+        "value": 1
+      }
+    ],
+    "response_sha256": "6e2d1c97c8fc55c5521168579f9296363dedb4602a54f3c8539bc4cef265fb77"
+  },
+  {
+    "tool": "bid_bigdata_procurement_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.856,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "bid_bigdata_bid_win_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.858,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "winbidAmountStatList",
+      "winbidAreaStat",
+      "winbidStatList",
+      "winbidTrend"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "winbidAmountStatList[0].percent",
+        "value": 17.39
+      },
+      {
+        "path": "winbidAmountStatList[0].count",
+        "value": 4
+      },
+      {
+        "path": "winbidAmountStatList[1].percent",
+        "value": 21.74
+      },
+      {
+        "path": "winbidAmountStatList[1].count",
+        "value": 5
+      },
+      {
+        "path": "winbidAmountStatList[2].percent",
+        "value": 4.35
+      },
+      {
+        "path": "winbidAmountStatList[2].count",
+        "value": 1
+      },
+      {
+        "path": "winbidAmountStatList[3].percent",
+        "value": 52.17
+      },
+      {
+        "path": "winbidAmountStatList[3].count",
+        "value": 12
+      },
+      {
+        "path": "winbidAmountStatList[4].percent",
+        "value": 4.35
+      },
+      {
+        "path": "winbidAmountStatList[4].count",
+        "value": 1
+      },
+      {
+        "path": "winbidAreaStat[0].count",
+        "value": 50
+      },
+      {
+        "path": "winbidAreaStat[1].count",
+        "value": 1
+      },
+      {
+        "path": "winbidAreaStat[2].count",
+        "value": 1
+      },
+      {
+        "path": "winbidStatList[0].count",
+        "value": 5
+      },
+      {
+        "path": "winbidStatList[0].percent",
+        "value": 10.87
+      },
+      {
+        "path": "winbidStatList[1].count",
+        "value": 3
+      },
+      {
+        "path": "winbidStatList[1].percent",
+        "value": 6.52
+      },
+      {
+        "path": "winbidStatList[2].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[2].percent",
+        "value": 4.35
+      },
+      {
+        "path": "winbidStatList[3].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[3].percent",
+        "value": 4.35
+      },
+      {
+        "path": "winbidStatList[4].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[4].percent",
+        "value": 4.35
+      },
+      {
+        "path": "winbidTrend[0].count",
+        "value": 7
+      },
+      {
+        "path": "winbidTrend[1].count",
+        "value": 3
+      },
+      {
+        "path": "winbidTrend[2].count",
+        "value": 6
+      },
+      {
+        "path": "winbidTrend[3].count",
+        "value": 10
+      },
+      {
+        "path": "winbidTrend[4].count",
+        "value": 14
+      }
+    ],
+    "response_sha256": "b7604031c4557aa256e36fa9f435113ee1bd0860d6f100b0fb31c15ce582d2a3"
+  },
+  {
+    "tool": "bid_bigdata_bidding_info",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "永辉超市股份有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 0.86,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 281,
+    "numeric_evidence": [
+      {
+        "path": "total",
+        "value": 281
+      }
+    ],
+    "response_sha256": "825179883fe9afc86cac8ea83ea67c888bedcccaf6ef61680cad6f994dfab255"
+  },
+  {
+    "tool": "enterprise_get_enterprise_base_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "永辉超市股份有限公司"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 1.798,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "base_info",
+      "desc",
+      "tag"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "base_info.payAmountCount.amount",
+        "value": 8925037165.0
+      },
+      {
+        "path": "base_info.regCapital.value",
+        "value": 8925037165.0
+      },
+      {
+        "path": "tag.hasStock",
+        "value": 1
+      },
+      {
+        "path": "tag.isAnomaly",
+        "value": 0
+      },
+      {
+        "path": "tag.isTopEnterprise",
+        "value": 1
+      }
+    ],
+    "response_sha256": "2c7a4df8cbcbe54166c192a08f8ad9058ecbd07684762d50fa28cd6757274663"
+  },
+  {
+    "tool": "enterprise_get_enterprise_holder_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "永辉超市股份有限公司"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 1.801,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "holderList",
+      "stockHolderList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "holderList[0].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[1].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[2].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[3].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[4].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "stockHolderList[0].shareHolding",
+        "value": 2668000000.0
+      },
+      {
+        "path": "stockHolderList[0].shareHoldingRatio",
+        "value": 0.2989
+      },
+      {
+        "path": "stockHolderList[1].shareHolding",
+        "value": 791000000.0
+      },
+      {
+        "path": "stockHolderList[1].shareHoldingRatio",
+        "value": 0.0887
+      },
+      {
+        "path": "stockHolderList[2].shareHolding",
+        "value": 635000000.0
+      },
+      {
+        "path": "stockHolderList[2].shareHoldingRatio",
+        "value": 0.0711
+      },
+      {
+        "path": "stockHolderList[3].shareHolding",
+        "value": 479000000.0
+      },
+      {
+        "path": "stockHolderList[3].shareHoldingRatio",
+        "value": 0.0536
+      },
+      {
+        "path": "stockHolderList[4].shareHolding",
+        "value": 99800000.0
+      },
+      {
+        "path": "stockHolderList[4].shareHoldingRatio",
+        "value": 0.0112
+      }
+    ],
+    "response_sha256": "6fe06c5f40341a677f60b4dffa8e2619797c110c4d6153082537f8c8fa612bcb"
+  },
+  {
+    "tool": "enterprise_get_enterprise_invest_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "永辉超市股份有限公司"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 1.807,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 50,
+    "reported_total": 84,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[0].ratio",
+        "value": 0.99
+      },
+      {
+        "path": "resultList[0].regCapital.value",
+        "value": 20000000.0
+      },
+      {
+        "path": "resultList[0].subscriptionAmount.value",
+        "value": 19800000.0
+      },
+      {
+        "path": "resultList[1].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[1].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[1].regCapital.value",
+        "value": 43550000.0
+      },
+      {
+        "path": "resultList[1].subscriptionAmount.value",
+        "value": 43550000.0
+      },
+      {
+        "path": "resultList[2].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[2].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[2].regCapital.value",
+        "value": 200000000.0
+      },
+      {
+        "path": "resultList[2].subscriptionAmount.value",
+        "value": 200000000.0
+      },
+      {
+        "path": "resultList[3].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[3].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[3].regCapital.value",
+        "value": 10000000.0
+      },
+      {
+        "path": "resultList[3].subscriptionAmount.value",
+        "value": 60000000.0
+      },
+      {
+        "path": "resultList[4].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[4].regCapital.value",
+        "value": 10000000.0
+      },
+      {
+        "path": "resultList[4].subscriptionAmount.value",
+        "value": 10000000.0
+      },
+      {
+        "path": "total",
+        "value": 84
+      }
+    ],
+    "response_sha256": "a1e2d38c57e5d388611ea17d51c6dc7102ff2c9ba5981389088bcf9b9cb21caf"
+  },
+  {
+    "tool": "enterprise_get_enterprise_main_person_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "永辉超市股份有限公司"
+    },
+    "invocation_id": "1793068919182689000",
+    "elapsed_seconds": 1.81,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 10,
+    "reported_total": 10,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].relatedEnterpriseCurrentNum",
+        "value": 4
+      },
+      {
+        "path": "resultList[0].relatedEnterpriseHistoryNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseCurrentNum",
+        "value": 10
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseHistoryNum",
+        "value": 47
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseCurrentNum",
+        "value": 4
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseHistoryNum",
+        "value": 6
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseHistoryNum",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseCurrentNum",
+        "value": 97
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseHistoryNum",
+        "value": 16
+      },
+      {
+        "path": "total",
+        "value": 10
+      }
+    ],
+    "response_sha256": "7edcffb85bd856fe3760aaca9b076d0c47484358b5dcca04ae1ac9142f4b75fe"
+  }
+]

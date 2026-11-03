@@ -1,0 +1,118 @@
+{
+  "skill": "business-opportunity-skill",
+  "kind": "verified_positive_examples",
+  "run_id": "live-replaced-20261027",
+  "source_manifest": "../test-records/scenarios-20261027.json",
+  "scenarios": [
+    {
+      "id": "02-cloud-migration",
+      "title": "上云服务商机识别",
+      "user_request": "分析海尔智家股份有限公司的云资产、经营与招聘信号，寻找数字化升级触点。",
+      "purpose": "判断云服务与数字化解决方案切入点。",
+      "args": [
+        "--enterprise",
+        "海尔智家股份有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "云资产数据与经营规模分开",
+        "数字化程度结论有返回字段支撑",
+        "招聘岗位不被直接解释为采购计划",
+        "商机建议标注推断性质"
+      ],
+      "limitations": [
+        "云资产可见性受数据源限制",
+        "需要客户访谈确认真实预算与计划"
+      ]
+    },
+    {
+      "id": "03-rapid-hiring",
+      "title": "扩张型企业销售线索",
+      "user_request": "分析比亚迪股份有限公司的招聘、经营和招采活跃度，判断扩张带来的企业服务需求。",
+      "purpose": "识别扩张期潜在采购需求。",
+      "args": [
+        "--enterprise",
+        "比亚迪股份有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "招聘趋势和采购记录时间口径清楚",
+        "扩张判断引用多个维度",
+        "中标能力与采购需求不混淆",
+        "异常空数据不转为零"
+      ],
+      "limitations": [
+        "招聘增长不必然产生外部采购",
+        "报告不预测具体采购金额"
+      ]
+    },
+    {
+      "id": "05-reputation-screening",
+      "title": "舆情风险商机筛查",
+      "user_request": "分析恒大地产集团有限公司的经营、采购和舆情风险，判断是否应暂缓销售投入。",
+      "purpose": "避免在高风险客户上投入不匹配的销售资源。",
+      "args": [
+        "--enterprise",
+        "恒大地产集团有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "负面舆情有数量或记录依据",
+        "风险信号不会被高采购量完全抵消",
+        "商机结论说明数据时点",
+        "不输出信用违约法律结论"
+      ],
+      "limitations": [
+        "舆情不是完整信用评估",
+        "实际回款与合同风险需独立调查"
+      ]
+    },
+    {
+      "id": "06-regional-retail",
+      "title": "零售企业数字化商机",
+      "user_request": "评估永辉超市股份有限公司的经营、云资产、招聘与新闻信号，寻找零售数字化商机。",
+      "purpose": "支持零售行业解决方案拓客。",
+      "args": [
+        "--enterprise",
+        "永辉超市股份有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "云资产与招聘信号相互独立",
+        "经营趋势不被新闻数量替代",
+        "商机触点注明推断依据",
+        "数据缺口明确列出"
+      ],
+      "limitations": [
+        "不能仅凭公开数据确认系统采购计划",
+        "门店经营细节不在本报告覆盖范围"
+      ]
+    },
+    {
+      "id": "07-technology-growth",
+      "title": "科技企业增长商机",
+      "user_request": "分析小米科技有限责任公司的经营、招聘、云资产和招投标信号，评估企业服务商机。",
+      "purpose": "识别成长型科技企业的服务需求线索。",
+      "args": [
+        "--enterprise",
+        "小米科技有限责任公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "主体解析无歧义",
+        "增长动能引用经营和招聘证据",
+        "云资产条目不被当作预算证明",
+        "商机等级和证据强度匹配"
+      ],
+      "limitations": [
+        "公开信号只用于线索排序",
+        "实际需求、预算和决策链需销售核实"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "05-reputation-screening",
+  "verdict": "acceptable",
+  "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+  "checks": [
+    {
+      "expectation": "负面舆情有数量或记录依据",
+      "status": "pass",
+      "evidence": "通过：舆情统计总量=3164、负面舆情统计=1019；news_bigdata_news_stats=data；HTML/MD风险限制同时可见=True。；本轮当前产物：technical=passed，successful_data_calls=13；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[标讯记录总量=68；中标标的统计合计=13；当前招聘公开数=1220；近三月招聘公开数=1220；舆情统计总量=3164；负面舆情统计=1019]；quality={'total_sections': 6, 'populated_sections': 5, 'empty_sections': 1, 'coverage_pct': 83}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '招聘公开线索']；代表记录=6；calls[cloudmigration:cloudmigration_cloud_assets=empty；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；bidding:bid_bigdata_procurement_stats=empty；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "风险信号不会被高采购量完全抵消",
+      "status": "pass",
+      "evidence": "通过：标讯记录总量=68、中标标的统计合计=13；采购统计调用=empty、中标统计调用=data；报告章节=dict。；本轮当前产物：technical=passed，successful_data_calls=13；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[标讯记录总量=68；中标标的统计合计=13；当前招聘公开数=1220；近三月招聘公开数=1220；舆情统计总量=3164；负面舆情统计=1019]；quality={'total_sections': 6, 'populated_sections': 5, 'empty_sections': 1, 'coverage_pct': 83}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '招聘公开线索']；代表记录=6；calls[cloudmigration:cloudmigration_cloud_assets=empty；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；bidding:bid_bigdata_procurement_stats=empty；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "商机结论说明数据时点",
+      "status": "pass",
+      "evidence": "通过：generated_at=2026-10-26T18:03:06+08:00；招聘章节={\"current\": 1220, \"last_3m\": 1220, \"avg_salary\": 15304.2904321228, \"welfare\": []}；当前招聘公开数=1220、近三月招聘公开数=1220；趋势/章节注=。；本轮当前产物：technical=passed，successful_data_calls=13；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[标讯记录总量=68；中标标的统计合计=13；当前招聘公开数=1220；近三月招聘公开数=1220；舆情统计总量=3164；负面舆情统计=1019]；quality={'total_sections': 6, 'populated_sections': 5, 'empty_sections': 1, 'coverage_pct': 83}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '招聘公开线索']；代表记录=6；calls[cloudmigration:cloudmigration_cloud_assets=empty；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；bidding:bid_bigdata_procurement_stats=empty；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "不输出信用违约法律结论",
+      "status": "pass",
+      "evidence": "通过：abstract=本报告对「恒大地产集团有限公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率。；评分指标=无对应指标；coverage=83%，insights=[{\"feature\": \"中标业绩边界\", \"evidence\": \"中标标的统计项 5、标讯记录总量 68。\", \"interpretation\": \"仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。\"}, {\"feature\": \"扩张活动交叉线索\", \"evidence\": \"经营趋势命中 2 项；当前招聘 1220、近三月招聘 1220。\", \"interpretation\": \"经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。\"}, {\"feature\": \"负面舆情提示\", \"evidence\": \"情感统计中负面 1019 条，总量 3164 条。\", \"interpretation\": \"应人工复核负面样本、时间和相关性；本报告未查询司法/合规风险，不作信用或法律结论。\"}]。；本轮当前产物：technical=passed，successful_data_calls=13；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[标讯记录总量=68；中标标的统计合计=13；当前招聘公开数=1220；近三月招聘公开数=1220；舆情统计总量=3164；负面舆情统计=1019]；quality={'total_sections': 6, 'populated_sections': 5, 'empty_sections': 1, 'coverage_pct': 83}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '招聘公开线索']；代表记录=6；calls[cloudmigration:cloudmigration_cloud_assets=empty；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；bidding:bid_bigdata_procurement_stats=empty；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    }
+  ],
+  "issues": [],
+  "evidence_binding": {
+    "report.json": "41482fafcba8f9f62ca1230b7139b63de48a5d4d5816d10e97f0ef5823fedb48",
+    "report.html": "3eb9f017e2f577ff788c3d3445a626b84c2eeb28efc7bea849b726dae032308a",
+    "report.md": "4e9fdb2dc0c283c87b66f3abb27e937241fc47a427dc34beba661503acdcb039",
+    "calls.json": "81207b80d7f0bc2113630de9b79fefcc696329654bce0c8f054c64caff802b50",
+    "result.json": "47e12b44bbf9324654e1e6ab370d7f1fce2093bef5ec84e2103ee54dad2bc753",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

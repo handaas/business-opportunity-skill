@@ -1,0 +1,36 @@
+{
+  "id": "03-rapid-hiring",
+  "verdict": "acceptable",
+  "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+  "checks": [
+    {
+      "expectation": "招聘趋势和采购记录时间口径清楚",
+      "status": "pass",
+      "evidence": "通过：generated_at=2026-10-26T18:02:59+08:00；招聘章节={\"current\": 125052, \"last_3m\": 125052, \"avg_salary\": 7864.3639030064, \"welfare\": []}；当前招聘公开数=125052、近三月招聘公开数=125052；趋势/章节注=。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[标讯记录总量=1000；中标标的统计合计=9；当前招聘公开数=126960；近三月招聘公开数=126960；有效域名数=127；舆情统计总量=5131；负面舆情统计=156]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_financing_info=data；operation:operation_insight_business_scale=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "扩张判断引用多个维度",
+      "status": "pass",
+      "evidence": "通过：招聘工具状态=data/data，招聘章节={\"current\": 125052, \"last_3m\": 125052, \"avg_salary\": 7864.3639030064, \"welfare\": []}；当前招聘公开数=125052、近三月招聘公开数=125052。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[标讯记录总量=1000；中标标的统计合计=9；当前招聘公开数=126960；近三月招聘公开数=126960；有效域名数=127；舆情统计总量=5131；负面舆情统计=156]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_financing_info=data；operation:operation_insight_business_scale=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "中标能力与采购需求不混淆",
+      "status": "pass",
+      "evidence": "通过：标讯记录总量=1000、中标标的统计合计=9；采购统计调用=empty、中标统计调用=data；报告章节=dict。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[标讯记录总量=1000；中标标的统计合计=9；当前招聘公开数=126960；近三月招聘公开数=126960；有效域名数=127；舆情统计总量=5131；负面舆情统计=156]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_financing_info=data；operation:operation_insight_business_scale=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    },
+    {
+      "expectation": "异常空数据不转为零",
+      "status": "pass",
+      "evidence": "通过：无对应指标；开庭当前展示0条，其中日期非空0条、案号非空0条；章节注=。；本轮当前产物：technical=passed，successful_data_calls=14；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[标讯记录总量=1000；中标标的统计合计=9；当前招聘公开数=126960；近三月招聘公开数=126960；有效域名数=127；舆情统计总量=5131；负面舆情统计=156]；quality={'total_sections': 6, 'populated_sections': 6, 'empty_sections': 0, 'coverage_pct': 100}；非空章节=['主体与工商基础', '经营公开线索', '采购与中标事实（分列）', '舆情情感统计', '云资产与数字触点', '招聘公开线索']；代表记录=7；calls[cloudmigration:cloudmigration_cloud_assets=data；news:news_bigdata_news_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_procurement_stats=empty；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_financing_info=data；operation:operation_insight_business_scale=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)]"
+    }
+  ],
+  "issues": [],
+  "evidence_binding": {
+    "report.json": "28b29b6d72d0bccf7e4db2ec5676198c97edf1e2a7a81042f1fc80c0fd1f3f39",
+    "report.html": "b951601ec862058a2f19af931f26a23e3284b1a3e1ea557a65bbf0f869ec2e3e",
+    "report.md": "d5d595b787301c510f59d0750f0c7fc940fc77c329601dbcce5bed7e232cdf55",
+    "calls.json": "e2ce71f46b903cf77d9c2605433240f834c7e970ca660bf43f40ee95406639a3",
+    "result.json": "9473f6ef889239616030993335fce9f7acef05dde2cc8f323f12fa80c819a55f",
+    "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+  }
+}

@@ -1,0 +1,949 @@
+[
+  {
+    "tool": "news_bigdata_news_stats",
+    "domain": "news",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 0.48,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "newsSentimentStats",
+      "newsSentimentTrend",
+      "sentimentLabelList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "newsSentimentStats.negative",
+        "value": 46
+      },
+      {
+        "path": "newsSentimentStats.neutral",
+        "value": 2184
+      },
+      {
+        "path": "newsSentimentStats.positive",
+        "value": 939
+      },
+      {
+        "path": "newsSentimentStats.unknown",
+        "value": 5
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.positive",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.positive",
+        "value": 3
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.positive",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.positive",
+        "value": 4
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.positive",
+        "value": 5
+      }
+    ],
+    "response_sha256": "ea67df4cd63d74de36dc342c47d4d0b0055f64cc4638df59ce8d46eed75324d9"
+  },
+  {
+    "tool": "cloudmigration_cloud_assets",
+    "domain": "cloudmigration",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 0.582,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "cdnServerList",
+      "cloudConsumptionScale",
+      "cloudServerList",
+      "cloudServerNumInterval",
+      "cloudServiceProviderRatio",
+      "effectiveSubDomainList",
+      "effectiveSubDomainNum",
+      "hasCdn",
+      "hasOverseasCloudService",
+      "subDomainList",
+      "subDomainNum",
+      "cdnServerNum"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "cloudServiceProviderRatio[0].ratio",
+        "value": 0.022222222222222223
+      },
+      {
+        "path": "cloudServiceProviderRatio[1].ratio",
+        "value": 0.08888888888888889
+      },
+      {
+        "path": "cloudServiceProviderRatio[2].ratio",
+        "value": 0.26666666666666666
+      },
+      {
+        "path": "cloudServiceProviderRatio[3].ratio",
+        "value": 0.2
+      },
+      {
+        "path": "cloudServiceProviderRatio[4].ratio",
+        "value": 0.28888888888888886
+      },
+      {
+        "path": "effectiveSubDomainNum",
+        "value": 35
+      },
+      {
+        "path": "hasCdn",
+        "value": 1
+      },
+      {
+        "path": "hasOverseasCloudService",
+        "value": 0
+      },
+      {
+        "path": "subDomainNum",
+        "value": 35
+      },
+      {
+        "path": "cdnServerNum",
+        "value": 7
+      }
+    ],
+    "response_sha256": "827aaf0b9cccf7d93680dc51716530daccde57c19c5f1f32d2421a19cd6c1d72"
+  },
+  {
+    "tool": "recruitment_trend",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 0.848,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingCurrentCount",
+        "value": 750.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 750.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 730
+      },
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 24578
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 13214.4613561972
+      }
+    ],
+    "response_sha256": "4ea4fd19b237313e0cd09c531b1f82cfcbfe3e3837914800ebed4cc44c51a410"
+  },
+  {
+    "tool": "recruitment_employer_profile",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 0.85,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "benefitList",
+      "businessTags",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary",
+      "recruitingBusinessKeyWords",
+      "recruitingCities",
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingPositionKeyWords",
+      "recruitingTypes",
+      "truncatedFields"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 24578
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 13214.4613561972
+      },
+      {
+        "path": "recruitingCurrentCount",
+        "value": 750.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 750.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 730
+      },
+      {
+        "path": "truncatedFields.businessTags.total",
+        "value": 62
+      },
+      {
+        "path": "truncatedFields.businessTags.returned",
+        "value": 50
+      },
+      {
+        "path": "truncatedFields.recruitingCities.total",
+        "value": 218
+      },
+      {
+        "path": "truncatedFields.recruitingCities.returned",
+        "value": 50
+      }
+    ],
+    "response_sha256": "ec2ae1fb23f943e87bc788f810d1a1c5a3c359c4509b905ea469472457e687b1"
+  },
+  {
+    "tool": "bid_bigdata_procurement_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.247,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "bid_bigdata_bid_win_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.248,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "winbidAmountStatList",
+      "winbidAreaStat",
+      "winbidStatList",
+      "winbidTrend"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "winbidAmountStatList[0].percent",
+        "value": 12.31
+      },
+      {
+        "path": "winbidAmountStatList[0].count",
+        "value": 8
+      },
+      {
+        "path": "winbidAmountStatList[1].percent",
+        "value": 32.31
+      },
+      {
+        "path": "winbidAmountStatList[1].count",
+        "value": 21
+      },
+      {
+        "path": "winbidAmountStatList[2].percent",
+        "value": 18.46
+      },
+      {
+        "path": "winbidAmountStatList[2].count",
+        "value": 12
+      },
+      {
+        "path": "winbidAmountStatList[3].percent",
+        "value": 29.23
+      },
+      {
+        "path": "winbidAmountStatList[3].count",
+        "value": 19
+      },
+      {
+        "path": "winbidAmountStatList[4].percent",
+        "value": 7.69
+      },
+      {
+        "path": "winbidAmountStatList[4].count",
+        "value": 5
+      },
+      {
+        "path": "winbidAreaStat[0].count",
+        "value": 324
+      },
+      {
+        "path": "winbidAreaStat[1].count",
+        "value": 43
+      },
+      {
+        "path": "winbidAreaStat[2].count",
+        "value": 3
+      },
+      {
+        "path": "winbidAreaStat[3].count",
+        "value": 4
+      },
+      {
+        "path": "winbidAreaStat[4].count",
+        "value": 3
+      },
+      {
+        "path": "winbidStatList[0].count",
+        "value": 9
+      },
+      {
+        "path": "winbidStatList[0].percent",
+        "value": 8.91
+      },
+      {
+        "path": "winbidStatList[1].count",
+        "value": 5
+      },
+      {
+        "path": "winbidStatList[1].percent",
+        "value": 4.95
+      },
+      {
+        "path": "winbidStatList[2].count",
+        "value": 4
+      },
+      {
+        "path": "winbidStatList[2].percent",
+        "value": 3.96
+      },
+      {
+        "path": "winbidStatList[3].count",
+        "value": 4
+      },
+      {
+        "path": "winbidStatList[3].percent",
+        "value": 3.96
+      },
+      {
+        "path": "winbidStatList[4].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[4].percent",
+        "value": 1.98
+      },
+      {
+        "path": "winbidTrend[0].count",
+        "value": 2
+      },
+      {
+        "path": "winbidTrend[1].count",
+        "value": 3
+      },
+      {
+        "path": "winbidTrend[2].count",
+        "value": 3
+      },
+      {
+        "path": "winbidTrend[3].count",
+        "value": 12
+      },
+      {
+        "path": "winbidTrend[4].count",
+        "value": 1
+      }
+    ],
+    "response_sha256": "ce3e72c2efbd899be38cf044ed745b661c56b6868034090d8aaefe7240abe2a4"
+  },
+  {
+    "tool": "bid_bigdata_bidding_info",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.25,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 595,
+    "numeric_evidence": [
+      {
+        "path": "resultList[2].projectAmount",
+        "value": 1373.85
+      },
+      {
+        "path": "total",
+        "value": 595
+      }
+    ],
+    "response_sha256": "b376e513758aa1645f4604abcb01b68102709df2f01c8b278bec20b4fc464ca3"
+  },
+  {
+    "tool": "operation_insight_financing_info",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.618,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "fpFinancingCount",
+      "fpFinancingList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "fpFinancingCount",
+        "value": 7
+      }
+    ],
+    "response_sha256": "e0f466a09896e327249986b652ebf0b16e97f5f2c235ec65862f21fe70d9263a"
+  },
+  {
+    "tool": "operation_insight_company_trends",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.623,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "isStaffExpandIn6Month",
+      "isFoundSubsidiaryIn3Month",
+      "isExpandNewCityIn12Month",
+      "isDiffAreaWinBidIn6Month",
+      "isDiffAreaWinBidIn12Month"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "isStaffExpandIn6Month",
+        "value": 1
+      },
+      {
+        "path": "isFoundSubsidiaryIn3Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn12Month",
+        "value": 1
+      },
+      {
+        "path": "isDiffAreaWinBidIn6Month",
+        "value": 1
+      },
+      {
+        "path": "isDiffAreaWinBidIn12Month",
+        "value": 1
+      }
+    ],
+    "response_sha256": "8cd11ccd4dfd21bc68f8579394bf82de560ffd7a0576bbc5b6f490165ab78fa7"
+  },
+  {
+    "tool": "operation_insight_business_scale",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.628,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "annualTurnover",
+      "enterpriseScale"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "7c05a4d3bcd474b7963faa2bcced12f8a2be0b1d908d323dfe3d894da56b4354"
+  },
+  {
+    "tool": "operation_insight_enterprise_rankings",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "海尔智家股份有限公司",
+      "keywordType": "name",
+      "pageSize": 10
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 1.63,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 10,
+    "reported_total": 32,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].rankingListYear",
+        "value": 2024
+      },
+      {
+        "path": "resultList[0].rank",
+        "value": 407
+      },
+      {
+        "path": "resultList[1].rankingListYear",
+        "value": 2024
+      },
+      {
+        "path": "resultList[1].rank",
+        "value": 104
+      },
+      {
+        "path": "resultList[2].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[2].rank",
+        "value": 419
+      },
+      {
+        "path": "resultList[3].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[3].rank",
+        "value": 118
+      },
+      {
+        "path": "resultList[4].rankingListYear",
+        "value": 2023
+      },
+      {
+        "path": "resultList[4].rank",
+        "value": 24
+      },
+      {
+        "path": "total",
+        "value": 32
+      }
+    ],
+    "response_sha256": "8c05c95cf5f0a684d173bbeaa1d3bb1c0ac90b0023a1055b3053882fd7aa529a"
+  },
+  {
+    "tool": "enterprise_get_enterprise_base_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "海尔智家股份有限公司"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 3.05,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "base_info",
+      "desc",
+      "tag"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "base_info.payAmountCount.amount",
+        "value": 9377629650.0
+      },
+      {
+        "path": "base_info.regCapital.value",
+        "value": 9438114893.0
+      },
+      {
+        "path": "tag.hasStock",
+        "value": 1
+      },
+      {
+        "path": "tag.isAnomaly",
+        "value": 0
+      },
+      {
+        "path": "tag.isTopEnterprise",
+        "value": 1
+      }
+    ],
+    "response_sha256": "1d910fe7996d5c9dd3ef88197a3f86b39aa4d3ab4b96d6e283be3e02ee0733a9"
+  },
+  {
+    "tool": "enterprise_get_enterprise_holder_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "海尔智家股份有限公司"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 3.06,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "holderList",
+      "stockHolderList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "holderList[0].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[0].ratio",
+        "value": 0.678969
+      },
+      {
+        "path": "holderList[0].subscriptionDetail.amount",
+        "value": 6408185099.0
+      },
+      {
+        "path": "holderList[1].payAmount.value",
+        "value": 1339961700.0000002
+      },
+      {
+        "path": "holderList[1].ratio",
+        "value": 0.141973
+      },
+      {
+        "path": "holderList[1].subscriptionDetail.amount",
+        "value": 1339961700.0000002
+      },
+      {
+        "path": "holderList[2].payAmount.value",
+        "value": 743773000.0
+      },
+      {
+        "path": "holderList[2].ratio",
+        "value": 0.078805
+      },
+      {
+        "path": "holderList[2].subscriptionDetail.amount",
+        "value": 743773000.0
+      },
+      {
+        "path": "holderList[3].ratio",
+        "value": 0.03334
+      },
+      {
+        "path": "holderList[3].subscriptionDetail.amount",
+        "value": 314671000.0
+      },
+      {
+        "path": "holderList[4].payAmount.value",
+        "value": 0
+      },
+      {
+        "path": "holderList[4].ratio",
+        "value": 0.032103
+      },
+      {
+        "path": "holderList[4].subscriptionDetail.amount",
+        "value": 302992994.0
+      },
+      {
+        "path": "stockHolderList[0].shareHolding",
+        "value": 2313000000.0
+      },
+      {
+        "path": "stockHolderList[0].shareHoldingRatio",
+        "value": 0.2466
+      },
+      {
+        "path": "stockHolderList[1].shareHolding",
+        "value": 1259000000.0
+      },
+      {
+        "path": "stockHolderList[1].shareHoldingRatio",
+        "value": 0.1342
+      },
+      {
+        "path": "stockHolderList[2].shareHolding",
+        "value": 1073000000.0
+      },
+      {
+        "path": "stockHolderList[2].shareHoldingRatio",
+        "value": 0.1144
+      },
+      {
+        "path": "stockHolderList[3].shareHolding",
+        "value": 539000000.0
+      },
+      {
+        "path": "stockHolderList[3].shareHoldingRatio",
+        "value": 0.0574
+      },
+      {
+        "path": "stockHolderList[4].shareHolding",
+        "value": 486000000.0
+      },
+      {
+        "path": "stockHolderList[4].shareHoldingRatio",
+        "value": 0.0518
+      }
+    ],
+    "response_sha256": "b4e4c6171abf8b3e6d39eed9fb3f12a150f783b8387a381813c128ad3646aed0"
+  },
+  {
+    "tool": "enterprise_get_enterprise_invest_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "海尔智家股份有限公司"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 3.063,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 50,
+    "reported_total": 60,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[0].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[0].regCapital.value",
+        "value": 100000000.0
+      },
+      {
+        "path": "resultList[0].subscriptionAmount.value",
+        "value": 100000000.0
+      },
+      {
+        "path": "resultList[1].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[1].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[1].regCapital.value",
+        "value": 260183435.31
+      },
+      {
+        "path": "resultList[1].subscriptionAmount.value",
+        "value": 260183435.30999997
+      },
+      {
+        "path": "resultList[2].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[2].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[2].regCapital.value",
+        "value": 100000000.0
+      },
+      {
+        "path": "resultList[2].subscriptionAmount.value",
+        "value": 100000000.0
+      },
+      {
+        "path": "resultList[3].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[3].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[3].regCapital.value",
+        "value": 262459000.0
+      },
+      {
+        "path": "resultList[3].subscriptionAmount.value",
+        "value": 262459000.0
+      },
+      {
+        "path": "resultList[4].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[4].regCapital.value",
+        "value": 110000000.0
+      },
+      {
+        "path": "resultList[4].subscriptionAmount.value",
+        "value": 110000000.0
+      },
+      {
+        "path": "total",
+        "value": 60
+      }
+    ],
+    "response_sha256": "a029a14973e18c1e9159785f29f46abbfc6acf68738f82a406745e4ce1a36e2e"
+  },
+  {
+    "tool": "enterprise_get_enterprise_main_person_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "海尔智家股份有限公司"
+    },
+    "invocation_id": "1793068913562020000",
+    "elapsed_seconds": 3.065,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 13,
+    "reported_total": 13,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[0].relatedEnterpriseHistoryNum",
+        "value": 4
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseHistoryNum",
+        "value": 5
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseCurrentNum",
+        "value": 2
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseHistoryNum",
+        "value": 0
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseHistoryNum",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseHistoryNum",
+        "value": 2
+      },
+      {
+        "path": "total",
+        "value": 13
+      }
+    ],
+    "response_sha256": "9631e7da19e3299bce3c1931db0b76c46540f8c59cc53473da64f54b57393190"
+  }
+]

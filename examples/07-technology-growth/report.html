@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="data:," />
-  <title>华为技术有限公司 供应商评估报告</title>
+  <title>小米科技有限责任公司 企业商机线索报告</title>
   <style>
     :root { --bg:#eef1f5; --card:#ffffff; --text:#1f2937; --muted:#64748b; --line:#d8dee8; --blue:#003b71; --deep:#003b71; --red:#7f1d1d; --gold:#d97706; --stripe:#666; }
     * { box-sizing:border-box; letter-spacing:0 !important; }
@@ -145,6 +145,7 @@
     .chart-box-gauge { max-width:380px; }
     .chart-title { margin:0 0 8px; color:#0b3768; font-size:15px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
     .chart-canvas { width:100%; height:300px; }
+    .chart-canvas[data-chart-state="waiting"],.chart-canvas[data-chart-state="error"] { display:flex; align-items:center; justify-content:center; color:#64748b; font-size:13px; text-align:center; }
     .chart-box-gauge .chart-canvas { height:240px; }
     .chart-data { margin-top:10px; }
     .chart-data summary { cursor:pointer; color:#0b5ca8; font-size:12px; font-weight:700; padding:4px 0; }
@@ -212,16 +213,70 @@ var Fr={},Gr={};var Wr,Hr=function(){function t(t,e,n){var i=this;this._sleepAft
 </script>
   <script>
 (function(){
-  window.__echarts_instances=[];
+  if(window.__handaas_boot_charts){window.__handaas_boot_charts();return;}
+  window.__echarts_instances=window.__echarts_instances||[];
+  var status=window.__handaas_chart_status={state:'waiting',total:0,ready:0,failed:0};
+  var timer=null, retries=0, MAX_RETRIES=100;
+  var layoutRetries=0, MAX_LAYOUT_RETRIES=50;
+  var PALETTE=['#0b5ca8','#0284c7','#0b3768','#d97706','#059669','#dc2626','#7c3aed','#db2777','#0891b2','#65a30d'];
+  var FONTS='-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
+  function summarize(nodes){
+    status.total=nodes.length;status.ready=0;status.failed=0;
+    nodes.forEach(function(el){
+      if(el.getAttribute('data-chart-state')==='ready'){status.ready++;}
+      else if(el.getAttribute('data-chart-state')==='error'){status.failed++;}
+    });
+    status.state=status.ready===status.total?'ready':
+      (status.ready+status.failed===status.total?(status.ready?'degraded':'error'):'waiting');
+  }
+  function raf(fn){if(window.requestAnimationFrame){window.requestAnimationFrame(fn);}else{fn();}}
   function boot(){
-    if(typeof echarts==='undefined'){return;}
-    var PALETTE=['#0b5ca8','#0284c7','#0b3768','#d97706','#059669','#dc2626','#7c3aed','#db2777','#0891b2','#65a30d'];
-    var FONTS='-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
-    document.querySelectorAll('.chart-canvas').forEach(function(el){
-      var raw=el.getAttribute('data-spec'); if(!raw){return;}
-      var spec; try{spec=JSON.parse(raw.replace(/&quot;/g,'"').replace(/&amp;/g,'&'));}catch(e){return;}
-      var chart=echarts.init(el,null,{renderer:'svg'});
-      window.__echarts_instances.push(chart);
+    if(document.readyState==='loading'){return;}
+    var nodes=document.querySelectorAll('.chart-canvas');
+    if(!nodes.length){summarize(nodes);return;}
+    if(!window.echarts || typeof window.echarts.init!=='function'){
+      var exhausted=retries>=MAX_RETRIES;
+      nodes.forEach(function(el){
+        if(el.__handaas_chart_ready){return;}
+        el.__handaas_dependency_error=true;
+        el.setAttribute('data-chart-state',exhausted?'error':'waiting');
+        el.textContent=exhausted?'图表库加载失败或不可用，请查看数据明细或重新生成离线报告。':'图表库正在加载，数据明细仍可查看。';
+      });
+      summarize(nodes);
+      if(!exhausted && timer===null){
+        retries++;
+        timer=setTimeout(function(){timer=null;boot();},100);
+      }
+      return;
+    }
+    if(timer!==null){clearTimeout(timer);timer=null;}
+    var pendingLayout=0;
+    nodes.forEach(function(el){
+      if(el.__handaas_chart_ready){return;}
+      if(el.getAttribute('data-chart-state')==='error' && !el.__handaas_dependency_error){return;}
+      if(window.ResizeObserver && !el.__handaas_resize_observer){
+        el.__handaas_resize_observer=new ResizeObserver(function(){
+          var current=el.__handaas_chart;
+          if(current && typeof current.resize==='function'){try{current.resize();}catch(ignored){}}
+          else{boot();}
+        });
+        el.__handaas_resize_observer.observe(el);
+      }
+      if((el.getClientRects && el.getClientRects().length===0) || el.clientWidth<2 || el.clientHeight<2){
+        el.setAttribute('data-chart-state','waiting');
+        el.textContent='图表等待布局完成后渲染，数据明细仍可查看。';
+        pendingLayout++;
+        return;
+      }
+      var chart=null;
+      try{
+        var raw=el.getAttribute('data-spec');
+        if(!raw){throw new Error('Missing chart configuration');}
+        // getAttribute already decodes HTML entities; a second decode corrupts labels.
+        var spec=JSON.parse(raw);
+        if(['line','bar','pie','gauge','radar'].indexOf(spec.type)<0){throw new Error('Unsupported chart type');}
+        el.textContent='';
+        chart=window.echarts.init(el,null,{renderer:'svg'});
       var opt={color:PALETTE,tooltip:{trigger: spec.type==='pie'?'item':'axis'},textStyle:{fontFamily:FONTS,fontSize:12,color:'#334155'},grid:{left:48,right:24,top:30,bottom:40},legend:{top:0,textStyle:{fontSize:11}}};
       if(spec.type==='line'){
         opt.xAxis={type:'category',data:spec.x,axisLabel:{fontSize:11,interval:0,rotate: spec.x && spec.x.length>6?35:0}};
@@ -247,63 +302,545 @@ var Fr={},Gr={};var Wr,Hr=function(){function t(t,e,n){var i=this;this._sleepAft
         opt.radar={indicator:spec.indicators,radius:'62%',axisName:{color:'#475569',fontSize:11},splitArea:{areaStyle:{color:['#f8fbff','#eef4fb']}}};
         opt.series=[{type:'radar',areaStyle:{opacity:0.18},data:spec.series}];
       }
-      chart.setOption(opt);
-      window.addEventListener('resize',function(){chart.resize();});
+        chart.setOption(opt);
+        el.__handaas_chart=chart;
+        el.__handaas_chart_ready=true;
+        el.__handaas_dependency_error=false;
+        el.setAttribute('data-chart-state','ready');
+        window.__echarts_instances.push(chart);
+        raf(function(){try{chart.resize();}catch(ignored){}});
+      }catch(e){
+        if(chart && typeof chart.dispose==='function'){try{chart.dispose();}catch(ignored){}}
+        el.__handaas_dependency_error=false;
+        el.setAttribute('data-chart-state','error');
+        el.textContent='图表绘制失败，请查看数据明细。';
+      }
     });
+    summarize(nodes);
+    if(pendingLayout && layoutRetries<MAX_LAYOUT_RETRIES){
+      layoutRetries++;
+      setTimeout(boot,100);
+    }
   }
-  if(document.readyState!=='loading'){boot();}else{document.addEventListener('DOMContentLoaded',boot);}
+  window.__handaas_boot_charts=boot;
   window.__echarts_resize_all=function(){
     (window.__echarts_instances||[]).forEach(function(c){try{c.resize();}catch(e){}});
   };
+  function bootAfterLayout(){
+    raf(function(){boot();window.__echarts_resize_all();});
+  }
+  window.addEventListener('resize',window.__echarts_resize_all);
+  window.addEventListener('load',bootAfterLayout);
+  window.addEventListener('pageshow',bootAfterLayout);
+  window.addEventListener('handaas:echarts-ready',bootAfterLayout);
+  window.addEventListener('orientationchange',bootAfterLayout);
+  // A very late external script can still recover after the bounded retry ends.
+  document.addEventListener('load',function(event){
+    if(event.target && event.target.tagName==='SCRIPT'){boot();}
+  },true);
+  document.addEventListener('DOMContentLoaded',bootAfterLayout);
+  document.addEventListener('visibilitychange',boot);
+  if(document.fonts && document.fonts.ready){document.fonts.ready.then(function(){window.__echarts_resize_all();});}
+  [0,300,1000,2500].forEach(function(ms){setTimeout(function(){boot();window.__echarts_resize_all();},ms);});
+  boot();
 })();
 </script>
 </head>
 <body>
   <article class="report-page">
-    <div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div>
+    <div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div>
     <div class="cover-grid">
       <aside class="cover-side">
-        <h2 class="cover-side-title">供应商评估报告</h2>
-        <p class="cover-date">2026年08月10日</p>
+        <h2 class="cover-side-title">企业商机事实与线索报告</h2>
+        <p class="cover-date">2026年10月27日</p>
         <h3 class="toc-title">目录</h3>
         <ol class="toc-list"><li><span>报告摘要</span></li><li><span>查询对象与口径</span></li><li><span>数据总览</span></li><li><span>核心分析</span></li><li><span>代表性记录</span></li><li><span>特征与洞察</span></li></ol>
         <h3 class="scope-title">报告口径</h3>
-        <div class="biz-scope"><div class="biz-scope-item"><span>匹配对象</span><strong>华为技术有限公司</strong></div><div class="biz-scope-item"><span>匹配方式</span><strong>供应商评估（直接聚合 6 个 MCP：工商/风险/经营/渠道/工厂/招聘）</strong></div><div class="biz-scope-item"><span>数据范围</span><strong>覆盖 3/6 大数据源，8 个明细章节，2 条跨维度洞察</strong></div><div class="biz-scope-item"><span>局限说明</span><strong>供应商评估结论基于多维公开数据交叉分析；建议结合实地考察与财务审计综合决策。</strong></div></div>
+        <div class="biz-scope"><div class="biz-scope-item"><span>匹配对象</span><strong>小米科技有限责任公司</strong></div><div class="biz-scope-item"><span>匹配方式</span><strong>单企业商机事实观察（不评分）</strong></div><div class="biz-scope-item"><span>数据范围</span><strong>有效覆盖 6/6 个主题域；生成时间 2026-10-27T10:42:08+08:00</strong></div><div class="biz-scope-item"><span>局限说明</span><strong>缺口：司法与合规风险（本 skill 未查询）。中标业绩不等同采购需求，招聘和云资产不等同预算；司法与合规风险未评估。</strong></div></div>
       </aside>
       <section class="cover-main">
         <p class="report-kicker">BUSINESS OPPORTUNITY ANALYSIS</p>
-        <h1>华为技术有限公司 供应商评估报告</h1>
-        <p class="report-lead">本报告以「华为技术有限公司」为评估对象，直接聚合工商、风险、经营、渠道、工厂、招聘 3 大数据源的多维原始数据，供应商综合评分 25.0（结论：需深入调查）。供应商专项评分均值 25.0 偏低，建议补充实地考察与更多维度数据深度调查</p>
+        <h1>小米科技有限责任公司 企业商机线索报告</h1>
+        <p class="report-lead">本报告对「小米科技有限责任公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率</p>
         <div class="abstract-box">报告涵盖查询对象、数据总览、核心分析、代表性记录与结构洞察，所有数据均标注口径与来源。</div>
-        <div class="biz-metrics"><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">供应商综合评分</span><span class="m-tag t-neutral">需深入调查</span><span class="m-value">25.0</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 411.41亿</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">10404</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">1</span></div><div class="biz-metric"><span class="m-name">成立年限</span><span class="m-tag"></span><span class="m-value">39 年</span></div><div class="biz-metric"><span class="m-name">财务稳健性</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">风险隔离度</span><span class="m-tag"></span><span class="m-value">0</span></div></div>
-        <ul class="exec-list"><li>供应商专项评分均值 25.0 偏低，建议补充实地考察与更多维度数据深度调查。</li><li>财务稳健性一般，建议结合更多维度数据综合评估。</li><li>建议补充工厂产能与经营规模数据以评估匹配度。</li></ul>
-        <div class="cover-findings"><h3 class="cover-findings-title">核心发现</h3><div class="cover-findings-grid"><div class="finding-card"><p class="f-label">账期风险与财务稳健性</p><p class="f-text">财务数据有限。</p></div><div class="finding-card"><p class="f-label">产能与经营规模匹配度</p><p class="f-text">人员规模 10000人以上、年营业额 10亿以上。</p></div></div></div>
-        <div class="cover-dimensions"><span class="dim-label">分析维度</span><div class="dim-tags"><span class="dim-tag">供应商综合评分</span><span class="dim-tag">供应商概况</span><span class="dim-tag">供货能力</span><span class="dim-tag">股东出资结构</span><span class="dim-tag">对外投资清单（关联方敞口）</span><span class="dim-tag">供应商专项评分矩阵</span><span class="dim-tag">经营规模与资本运作</span><span class="dim-tag">招聘与扩张活跃度</span></div></div>
-        <div class="cover-scope-bar"><span class="scope-item"><em>数据产品</em>企业大数据、企业风险洞察、企业经营分析、渠道洞察、工厂洞察、招聘大数据</span><span class="scope-item"><em>覆盖范围</em>覆盖 3/6 大数据源，8 个明细章节，2 条跨维度洞察</span></div>
+        <div class="biz-metrics"><div class="biz-metric"><span class="m-name">标讯记录总量</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">中标标的统计合计</span><span class="m-tag"></span><span class="m-value">9</span></div><div class="biz-metric"><span class="m-name">当前招聘公开数</span><span class="m-tag"></span><span class="m-value">3726</span></div><div class="biz-metric"><span class="m-name">近三月招聘公开数</span><span class="m-tag"></span><span class="m-value">3726</span></div><div class="biz-metric"><span class="m-name">有效域名数</span><span class="m-tag"></span><span class="m-value">1427</span></div><div class="biz-metric"><span class="m-name">舆情统计总量</span><span class="m-tag"></span><span class="m-value">5904</span></div><div class="biz-metric"><span class="m-name">负面舆情统计</span><span class="m-tag"></span><span class="m-value">874</span></div><div class="biz-metric-empty"></div></div>
+        <ul class="exec-list"><li>报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率。</li><li>仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。</li><li>经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。</li><li>说明存在可观测云资产触点；不能据此评价数字化成熟度、迁移意向或预算。</li><li>应人工复核负面样本、时间和相关性；本报告未查询司法/合规风险，不作信用或法律结论。</li></ul>
+        <div class="cover-findings"><h3 class="cover-findings-title">核心发现</h3><div class="cover-findings-grid"><div class="finding-card"><p class="f-label">中标业绩边界</p><p class="f-text">中标标的统计项 5、标讯记录总量 50。</p></div><div class="finding-card"><p class="f-label">扩张活动交叉线索</p><p class="f-text">经营趋势命中 6 项；当前招聘 3726、近三月招聘 3726。</p></div><div class="finding-card"><p class="f-label">云资产触点</p><p class="f-text">有效域名 1427，云服务器区间 1000台以上。</p></div><div class="finding-card"><p class="f-label">负面舆情提示</p><p class="f-text">情感统计中负面 874 条，总量 5904 条。</p></div></div></div>
+        <div class="cover-dimensions"><span class="dim-label">分析维度</span><div class="dim-tags"><span class="dim-tag">主体与工商基础</span><span class="dim-tag">经营公开线索</span><span class="dim-tag">采购与中标事实（分列）</span><span class="dim-tag">舆情情感统计</span><span class="dim-tag">云资产与数字触点</span><span class="dim-tag">招聘公开线索</span></div></div>
+        <div class="cover-scope-bar"><span class="scope-item"><em>数据产品</em>企业基础信息、经营动态、采购与中标统计、舆情统计、云资产线索、招聘公开线索</span><span class="scope-item"><em>覆盖范围</em>有效覆盖 6/6 个主题域；生成时间 2026-10-27T10:42:08+08:00</span></div>
       </section>
     </div>
   </article>
   <main class="research-doc">
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>报告摘要</h2><p class="biz-section-note">概述分析对象、数据覆盖范围与核心发现。</p></div><span class="biz-tag">Summary</span></div><p class="biz-summary">本报告以「华为技术有限公司」为评估对象，直接聚合工商、风险、经营、渠道、工厂、招聘 3 大数据源的多维原始数据，供应商综合评分 25.0（结论：需深入调查）。供应商专项评分均值 25.0 偏低，建议补充实地考察与更多维度数据深度调查</p></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>查询对象与口径</h2><p class="biz-section-note">说明匹配对象、匹配方式与数据范围。</p></div><span class="biz-tag">Caliber</span></div><div class="info-list"><div class="info-row"><span class="info-label">匹配对象</span><span class="info-value">华为技术有限公司</span></div><div class="info-row"><span class="info-label">匹配方式</span><span class="info-value">供应商评估（直接聚合 6 个 MCP：工商/风险/经营/渠道/工厂/招聘）</span></div><div class="info-row"><span class="info-label">数据范围</span><span class="info-value">覆盖 3/6 大数据源，8 个明细章节，2 条跨维度洞察</span></div><div class="info-row"><span class="info-label">局限说明</span><span class="info-value">供应商评估结论基于多维公开数据交叉分析；建议结合实地考察与财务审计综合决策。</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>数据总览</h2><p class="biz-section-note">关键指标一览。</p></div><span class="biz-tag">Metrics</span></div><div class="biz-metrics"><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">供应商综合评分</span><span class="m-tag t-neutral">需深入调查</span><span class="m-value">25.0</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 411.41亿</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">10404</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">1</span></div><div class="biz-metric"><span class="m-name">成立年限</span><span class="m-tag"></span><span class="m-value">39 年</span></div><div class="biz-metric"><span class="m-name">财务稳健性</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">风险隔离度</span><span class="m-tag"></span><span class="m-value">0</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>核心分析</h2><p class="biz-section-note">按维度展开目标核心数据与结构化明细。</p></div><span class="biz-tag">Analysis</span></div><h3 class="biz-subsection-title">供应商综合评分</h3><p class="biz-section-note">准入结论：需深入调查</p><div class="chart-box chart-box-gauge"><div class="chart-canvas" data-chart="gauge" data-spec="{&quot;type&quot;:&quot;gauge&quot;,&quot;value&quot;:25.0,&quot;max&quot;:100,&quot;level&quot;:&quot;需深入调查&quot;}"></div></div>
-<h3 class="biz-subsection-title">供应商概况</h3><div class="info-list"><div class="info-row"><span class="info-label">企业名称</span><span class="info-value">华为技术有限公司</span></div><div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value">914403001922038216</span></div><div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">赵明路</span></div><div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司(法人独资)</span></div><div class="info-row"><span class="info-label">行业</span><span class="info-value">制造业 / 计算机、通信和其他电子设备制造业 / 通信设备制造 / 通信系统设备制造</span></div><div class="info-row"><span class="info-label">注册资本</span><span class="info-value">人民币 411.41亿</span></div><div class="info-row"><span class="info-label">成立日期</span><span class="info-value">1987-09-15</span></div><div class="info-row"><span class="info-label">经营状态</span><span class="info-value">营业</span></div><div class="info-row"><span class="info-label">注册地址</span><span class="info-value">深圳市龙岗区坂田华为总部办公楼</span></div><div class="info-row"><span class="info-label">经营范围</span><span class="info-value">一般经营项目:程控交换机、传输设备、数据通信设备、宽带多媒体设备、电源、无线通信设备、微电子产品、软件、系统集成工程、计算机及配套设备、终端设备及相关通信信息产品、数据中心机房基础设施及配套产品(含供配电、空调制冷设备、智能管理监控等)的开发、生产、销售、技术服务、工程安装、维修、咨询、代理、租赁;信息系统设计、集成、运行维护;集成电路设计、研发;统一通信及协作类产品,服务器及配套软硬件产品,存储设备及相关软件的研发、生产、销售;无线数据产品(不含限制项目)的研发、生产、销售;通信站点机房基础设施及通信配套设备(含通信站点、通信机房、通信电源、机柜、天线、通信线缆、配电、智能管理监控、锂电及储能系统等)的研发、生产、销售;能源科学技术研究及能源相关产品的研发、生产、销售;大数据产品、物联网及通信相关领域产品的研发、生产、销售;汽车零部件及智能系统的研发、生产、销售及服务;建筑工程;设计、…</span></div></div>
-<h3 class="biz-subsection-title">供货能力</h3><div class="info-list"><div class="info-row"><span class="info-label">产线数</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">普工人数</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">质检人数</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">主要设备</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">管理体系认证</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">月产能</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">服务品牌数</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">主要产品数</span><span class="info-value">-</span></div></div>
-<h3 class="biz-subsection-title">股东出资结构</h3><p class="biz-section-note">股东持股比例与实缴情况（资本充实性核查基础）</p><div class="table-wrap"><table><thead><tr><th>股东名称</th><th>持股比例</th><th>认缴金额</th><th>实缴金额</th><th>股东类型</th></tr></thead><tbody><tr><td>华为投资控股有限公司</td><td>100.0%</td><td>人民币 411.41亿</td><td>人民币 405.41亿</td><td>企业法人</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">对外投资清单（关联方敞口）</h3><p class="biz-section-note">共 50 家对外投资（展示前 15 家），风险可能经关联方传导</p><div class="table-wrap"><table><thead><tr><th>被投资企业</th><th>持股比例</th><th>经营状态</th><th>成立日期</th><th>注册资本</th></tr></thead><tbody><tr><td>杭州华为企业通信技术有限公司</td><td>100%</td><td>营业 &gt; 存续</td><td>2008-07-11</td><td>人民币 4.30亿</td></tr><tr><td>深圳市华为思义技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2025-04-27</td><td>人民币 2000万</td></tr><tr><td>成都华为技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2007-06-07</td><td>人民币 1.50亿</td></tr><tr><td>华为软件技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2005-09-07</td><td>人民币 5.00亿</td></tr><tr><td>华为技术服务(福建)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-04-28</td><td>人民币 500万</td></tr><tr><td>深圳市海思半导体有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2004-10-18</td><td>人民币 20.00亿</td></tr><tr><td>东莞华为服务有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2016-12-09</td><td>人民币 2.00亿</td></tr><tr><td>华为技术服务(云南)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-10-28</td><td>人民币 1200万</td></tr><tr><td>北京华为数字技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2006-03-08</td><td>人民币 2.00亿</td></tr><tr><td>华为机器有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2007-09-12</td><td>人民币 21.00亿</td></tr><tr><td>华为技术服务(山西)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2023-12-27</td><td>人民币 500万</td></tr><tr><td>海思技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2018-06-19</td><td>人民币 8000万</td></tr><tr><td>华为技术服务(湖南)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-09-09</td><td>人民币 1000万</td></tr><tr><td>东莞极目机器有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2023-06-15</td><td>人民币 46.89亿</td></tr><tr><td>上海华为技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2001-01-16</td><td>人民币 2.00亿</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">供应商专项评分矩阵</h3><p class="biz-section-note">跨维度交叉评分（供货能力 / 合规健康度 / 财务稳健性 / 风险隔离度）</p><div class="table-wrap"><table><thead><tr><th>评估维度</th><th>评分</th><th>等级</th></tr></thead><tbody><tr><td>财务稳健性</td><td>50</td><td>中</td></tr><tr><td>风险隔离度</td><td>0</td><td>弱</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">经营规模与资本运作</h3><div class="info-list"><div class="info-row"><span class="info-label">人员规模</span><span class="info-value">10000人以上</span></div><div class="info-row"><span class="info-label">年营业额</span><span class="info-value">10亿以上</span></div><div class="info-row"><span class="info-label">上榜记录</span><span class="info-value">10</span></div></div>
-<h3 class="biz-subsection-title">招聘与扩张活跃度</h3><div class="info-list"><div class="info-row"><span class="info-label">当前在招</span><span class="info-value">10404</span></div><div class="info-row"><span class="info-label">近三月招聘</span><span class="info-value">10404</span></div><div class="info-row"><span class="info-label">平均薪酬</span><span class="info-value">11957 元/月</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>代表性记录</h2><p class="biz-section-note">关键明细记录 Top N。</p></div><span class="biz-tag">Records</span></div><div class="table-wrap"><table><thead><tr><th>维度</th><th>关键记录</th></tr></thead><tbody><tr><td>对外投资</td><td>50 家关联企业（其中 10 家已注销）</td></tr></tbody></table></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">供应商评估报告</div></div><div class="biz-section-head"><div><h2>特征与洞察</h2><p class="biz-section-note">基于数据的结构化解读。</p></div><span class="biz-tag">Insights</span></div><div class="structural-feature-grid"><article class="structural-feature-card">
-  <h3>账期风险与财务稳健性</h3>
-  <p class="structural-evidence">财务数据有限。</p>
-  <p>财务稳健性一般，建议结合更多维度数据综合评估。</p>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>报告摘要</h2><p class="biz-section-note">概述分析对象、数据覆盖范围与核心发现。</p></div><span class="biz-tag">Summary</span></div><p class="biz-summary">本报告对「小米科技有限责任公司」进行商机事实整理。报告仅列示可核验的采购、中标、经营、招聘、云资产和舆情事实，不生成商机分或成交概率</p></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>查询对象与口径</h2><p class="biz-section-note">说明匹配对象、匹配方式与数据范围。</p></div><span class="biz-tag">Caliber</span></div><div class="info-list"><div class="info-row"><span class="info-label">匹配对象</span><span class="info-value">小米科技有限责任公司</span></div><div class="info-row"><span class="info-label">匹配方式</span><span class="info-value">单企业商机事实观察（不评分）</span></div><div class="info-row"><span class="info-label">数据范围</span><span class="info-value">有效覆盖 6/6 个主题域；生成时间 2026-10-27T10:42:08+08:00</span></div><div class="info-row"><span class="info-label">局限说明</span><span class="info-value">缺口：司法与合规风险（本 skill 未查询）。中标业绩不等同采购需求，招聘和云资产不等同预算；司法与合规风险未评估。</span></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>数据总览</h2><p class="biz-section-note">关键指标一览。</p></div><span class="biz-tag">Metrics</span></div><div class="biz-metrics"><div class="biz-metric"><span class="m-name">标讯记录总量</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">中标标的统计合计</span><span class="m-tag"></span><span class="m-value">9</span></div><div class="biz-metric"><span class="m-name">当前招聘公开数</span><span class="m-tag"></span><span class="m-value">3726</span></div><div class="biz-metric"><span class="m-name">近三月招聘公开数</span><span class="m-tag"></span><span class="m-value">3726</span></div><div class="biz-metric"><span class="m-name">有效域名数</span><span class="m-tag"></span><span class="m-value">1427</span></div><div class="biz-metric"><span class="m-name">舆情统计总量</span><span class="m-tag"></span><span class="m-value">5904</span></div><div class="biz-metric"><span class="m-name">负面舆情统计</span><span class="m-tag"></span><span class="m-value">874</span></div><div class="biz-metric-empty"></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>核心分析</h2><p class="biz-section-note">按维度展开目标核心数据与结构化明细。</p></div><span class="biz-tag">Analysis</span></div><h3 class="biz-subsection-title">主体与工商基础</h3><div class="info-list"><div class="info-row"><span class="info-label">企业名称</span><span class="info-value">小米科技有限责任公司</span></div><div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value">91110108551385082Q</span></div><div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">雷军</span></div><div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司(自然人投资或控股)</span></div><div class="info-row"><span class="info-label">行业</span><span class="info-value">科学研究和技术服务业 / 科技推广和应用服务业 / 其他科技推广服务业</span></div><div class="info-row"><span class="info-label">注册资本</span><span class="info-value">人民币 14.77亿</span></div><div class="info-row"><span class="info-label">实缴资本</span><span class="info-value">-</span></div><div class="info-row"><span class="info-label">成立日期</span><span class="info-value">2010-03-03</span></div><div class="info-row"><span class="info-label">经营状态</span><span class="info-value">营业</span></div><div class="info-row"><span class="info-label">注册地址</span><span class="info-value">北京市海淀区西二旗中路33号院6号楼6层006号</span></div><div class="info-row"><span class="info-label">经营范围</span><span class="info-value">一般项目技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广;货物进出口;技术进出口;进出口代理;通讯设备销售;厨具卫具及日用杂品批发;厨具卫具及日用杂品零售;个人卫生用品销售;卫生用品和一次性使用医疗用品销售;日用杂品销售;日用百货销售;日用品销售;化妆品批发;化妆品零售;第一类医疗器械销售;第二类医疗器械销售;玩具销售;体育用品及器材零售;体育用品及器材批发;文具用品零售;文具用品批发;鞋帽批发;鞋帽零售;服装服饰批发;服装服饰零售;钟表销售;眼镜销售(不含隐形眼镜);针纺织品销售;家用电器销售;日用家电零售;家具销售;礼品花卉销售;农作物种子经营(仅限不再分装的包装种子);照相机及器材销售;照相器材及望远镜批发;照相器材及望远镜零售;工艺美术品及收藏品零售(象牙及其制品除外);工艺美术品及礼仪用品销售(象牙及其制品除外);计算机软硬件及辅助设备零售;计算机软硬件及辅助设备批发…</span></div></div>
+<h3 class="biz-subsection-title">经营公开线索</h3><div class="info-list"><div class="info-row"><span class="info-label">scale</span><span class="info-value">{
+  &quot;staff&quot;: &quot;10000人以上&quot;,
+  &quot;turnover&quot;: &quot;10亿以上&quot;
+}</span></div><div class="info-row"><span class="info-label">financing_count</span><span class="info-value">7</span></div><div class="info-row"><span class="info-label">financing_list</span><span class="info-value">[
+  {
+    &quot;financingAmount&quot;: &quot;370.53亿港元&quot;,
+    &quot;financingSeries&quot;: &quot;IPO&quot;,
+    &quot;financingTime&quot;: &quot;2018-07-01&quot;,
+    &quot;investorList&quot;: [
+      &quot;公开发行&quot;
+    ]
+  },
+  {
+    &quot;financingAmount&quot;: &quot;$未透露&quot;,
+    &quot;financingSeries&quot;: &quot;战略投资&quot;,
+    &quot;financingTime&quot;: &quot;2015-04-27&quot;
+  },
+  {
+    &quot;financingAmount&quot;: &quot;11亿美元&quot;,
+    &quot;financingSeries&quot;: &quot;E轮及以后&quot;,
+    &quot;financingTime&quot;: &quot;2014-12-29&quot;,
+    &quot;investorList&quot;: [
+      &quot;云锋基金&quot;,
+      &quot;PSG&quot;,
+      &quot;DST Global&quot;,
+      &quot;厚朴投资&quot;,
+      &quot;全明星投资All-Stars Investment&quot;
+    ]
+  },
+  {
+    &quot;financingAmount&quot;: &quot;1亿美元&quot;,
+    &quot;financingSeries&quot;: &quot;D轮&quot;,
+    &quot;financingTime&quot;: &quot;2013-09-12&quot;,
+    &quot;investorList&quot;: [
+      &quot;DST Global&quot;
+    ]
+  },
+  {
+    &quot;financingAmount&quot;: &quot;2.16亿美元&quot;,
+    &quot;financingSeries&quot;: &quot;C轮&quot;,
+    &quot;financingTime&quot;: &quot;2012-06-01&quot;,
+    &quot;investorList&quot;: [
+      &quot;Temasek淡马锡&quot;,
+      &quot;DST Global&quot;
+    ]
+  },
+  {
+    &quot;financingAmount&quot;: &quot;9000万美元&quot;,
+    &quot;financingSeries&quot;: &quot;B轮&quot;,
+    &quot;financingTime&quot;: &quot;2011-12-01&quot;,
+    &quot;investorList&quot;: [
+      &quot;顺为资本&quot;,
+      &quot;Temasek淡马锡&quot;,
+      &quot;IDG资本&quot;,
+      &quot;启明创投&quot;,
+      &quot;高通QualcommVentures&quot;,
+      &quot;五源资本&quot;
+    ]
+  },
+  {
+    &quot;financingAmount&quot;: &quot;4100万美元&quot;,
+    &quot;financingSeries&quot;: &quot;A轮&quot;,
+    &quot;financingTime&quot;: &quot;2011-07-01&quot;,
+    &quot;investorList&quot;: [
+      &quot;顺为资本&quot;,
+      &quot;IDG资本&quot;,
+      &quot;启明创投&quot;,
+      &quot;五源资本&quot;
+    ]
+  }
+]</span></div><div class="info-row"><span class="info-label">trends</span><span class="info-value">{
+  &quot;isStaffExpandIn3Month&quot;: 1,
+  &quot;isStaffExpandIn6Month&quot;: 1,
+  &quot;isStaffExpandIn12Month&quot;: 1,
+  &quot;isExpandNewCityIn6Month&quot;: 1,
+  &quot;isExpandNewCityIn12Month&quot;: 1,
+  &quot;isDiffAreaWinBidIn12Month&quot;: 1
+}</span></div><div class="info-row"><span class="info-label">rankings</span><span class="info-value">[
+  {
+    &quot;rankingListName&quot;: &quot;2023中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2023,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 38,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2023中国新经济企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;新经济500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2023,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业评价协会&quot;,
+    &quot;rank&quot;: 34,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2022中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2022,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 30,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2022年中国新经济企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;新经济500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2022,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;36氪研究院&quot;,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2021年中国企业联合会、中国企业家协会联合发布中国企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;中国500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2021,
+    &quot;rankingListLevel&quot;: &quot;中国500强&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 95,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2021中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2021,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 36,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2020中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2020,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 36,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2019中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2019,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 40,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  },
+  {
+    &quot;rankingListName&quot;: &quot;2018中国制造业企业500强&quot;,
+    &quot;rankingListType&quot;: &quot;制造业500强榜单&quot;,
+    &quot;rankingListYear&quot;: 2018,
+    &quot;rankingListLevel&quot;: &quot;国家级&quot;,
+    &quot;rankingListInstitution&quot;: &quot;中国企业联合会、中国企业家协会&quot;,
+    &quot;rank&quot;: 54,
+    &quot;rankingListCompanyName&quot;: &quot;小米科技有限责任公司&quot;
+  }
+]</span></div></div>
+<h3 class="biz-subsection-title">采购与中标事实（分列）</h3><div class="info-list"><div class="info-row"><span class="info-label">win_subjects</span><span class="info-value">[
+  {
+    &quot;count&quot;: 5,
+    &quot;percent&quot;: 14.71,
+    &quot;subjectMatter&quot;: &quot;录播教室&quot;
+  },
+  {
+    &quot;count&quot;: 1,
+    &quot;percent&quot;: 2.94,
+    &quot;subjectMatter&quot;: &quot;计算机实训室设备&quot;
+  },
+  {
+    &quot;count&quot;: 1,
+    &quot;percent&quot;: 2.94,
+    &quot;subjectMatter&quot;: &quot;实验室设备&quot;
+  },
+  {
+    &quot;count&quot;: 1,
+    &quot;percent&quot;: 2.94,
+    &quot;subjectMatter&quot;: &quot;专用设备&quot;
+  },
+  {
+    &quot;count&quot;: 1,
+    &quot;percent&quot;: 2.94,
+    &quot;subjectMatter&quot;: &quot;手术麻醉系统&quot;
+  }
+]</span></div><div class="info-row"><span class="info-label">win_areas</span><span class="info-value">[
+  {
+    &quot;area&quot;: &quot;广西壮族自治区&quot;,
+    &quot;count&quot;: 3
+  },
+  {
+    &quot;area&quot;: &quot;辽宁省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;宁夏回族自治区&quot;,
+    &quot;count&quot;: 5
+  },
+  {
+    &quot;area&quot;: &quot;四川省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;山西省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;北京&quot;,
+    &quot;count&quot;: 5
+  },
+  {
+    &quot;area&quot;: &quot;甘肃省&quot;,
+    &quot;count&quot;: 10
+  },
+  {
+    &quot;area&quot;: &quot;安徽省&quot;,
+    &quot;count&quot;: 2
+  },
+  {
+    &quot;area&quot;: &quot;云南省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;西藏自治区&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;重庆&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;河南省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;湖北省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;湖南省&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;area&quot;: &quot;广东省&quot;,
+    &quot;count&quot;: 1
+  }
+]</span></div><div class="info-row"><span class="info-label">win_amounts</span><span class="info-value">[
+  {
+    &quot;percent&quot;: 24.0,
+    &quot;range&quot;: &quot;10万以下&quot;,
+    &quot;count&quot;: 6
+  },
+  {
+    &quot;percent&quot;: 32.0,
+    &quot;range&quot;: &quot;10万~50万&quot;,
+    &quot;count&quot;: 8
+  },
+  {
+    &quot;percent&quot;: 24.0,
+    &quot;range&quot;: &quot;50万~100万&quot;,
+    &quot;count&quot;: 6
+  },
+  {
+    &quot;percent&quot;: 20.0,
+    &quot;range&quot;: &quot;100万~500万&quot;,
+    &quot;count&quot;: 5
+  }
+]</span></div><div class="info-row"><span class="info-label">win_trends</span><span class="info-value">[
+  {
+    &quot;year&quot;: &quot;2026&quot;,
+    &quot;count&quot;: 4
+  },
+  {
+    &quot;year&quot;: &quot;2025&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;year&quot;: &quot;2024&quot;,
+    &quot;count&quot;: 1
+  },
+  {
+    &quot;year&quot;: &quot;2021&quot;,
+    &quot;count&quot;: 2
+  },
+  {
+    &quot;year&quot;: &quot;2020&quot;,
+    &quot;count&quot;: 7
+  },
+  {
+    &quot;year&quot;: &quot;2019&quot;,
+    &quot;count&quot;: 9
+  },
+  {
+    &quot;year&quot;: &quot;2018&quot;,
+    &quot;count&quot;: 5
+  },
+  {
+    &quot;year&quot;: &quot;2017&quot;,
+    &quot;count&quot;: 3
+  },
+  {
+    &quot;year&quot;: &quot;2016&quot;,
+    &quot;count&quot;: 4
+  }
+]</span></div><div class="info-row"><span class="info-label">bidding_total</span><span class="info-value">50</span></div></div>
+<h3 class="biz-subsection-title">舆情情感统计</h3><div class="info-list"><div class="info-row"><span class="info-label">sentiment</span><span class="info-value">{
+  &quot;negative&quot;: 874,
+  &quot;neutral&quot;: 3726,
+  &quot;positive&quot;: 1262,
+  &quot;unknown&quot;: 42
+}</span></div><div class="info-row"><span class="info-label">sentiment_trend</span><span class="info-value">[
+  {
+    &quot;month&quot;: &quot;2025-06&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 0,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2025-07&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 1,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2025-08&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 1,
+      &quot;positive&quot;: 0
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2025-09&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 0,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2025-10&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 0,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-01&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 3,
+      &quot;positive&quot;: 4
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-04&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 0,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-05&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 1,
+      &quot;positive&quot;: 1
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-06&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 4,
+      &quot;positive&quot;: 0
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-07&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 2,
+      &quot;positive&quot;: 6
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-08&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 0,
+      &quot;positive&quot;: 2
+    }
+  },
+  {
+    &quot;month&quot;: &quot;2026-10&quot;,
+    &quot;stats&quot;: {
+      &quot;negative&quot;: 2,
+      &quot;positive&quot;: 0
+    }
+  }
+]</span></div></div>
+<h3 class="biz-subsection-title">云资产与数字触点</h3><div class="info-list"><div class="info-row"><span class="info-label">effective_domain_num</span><span class="info-value">1427</span></div><div class="info-row"><span class="info-label">sub_domain_num</span><span class="info-value">3602</span></div><div class="info-row"><span class="info-label">cloud_server_num</span><span class="info-value">1000台以上</span></div><div class="info-row"><span class="info-label">cloud_level</span><span class="info-value">5000W以上</span></div><div class="info-row"><span class="info-label">cloud_servers</span><span class="info-value">[
+  &quot;金山云&quot;,
+  &quot;白山云&quot;,
+  &quot;海外&quot;,
+  &quot;Amazon&quot;,
+  &quot;verycdn&quot;,
+  &quot;快网&quot;,
+  &quot;云端智度&quot;,
+  &quot;移动&quot;,
+  &quot;akamai&quot;,
+  &quot;网宿&quot;,
+  &quot;又拍云&quot;,
+  &quot;七牛&quot;,
+  &quot;Akamai&quot;,
+  &quot;天翼云&quot;,
+  &quot;Azure&quot;,
+  &quot;Zenlayer&quot;,
+  &quot;世纪互联&quot;,
+  &quot;联通&quot;,
+  &quot;腾讯云&quot;,
+  &quot;靠谱云&quot;,
+  &quot;Cloudflare&quot;,
+  &quot;其他&quot;,
+  &quot;电信&quot;,
+  &quot;AWS&quot;,
+  &quot;火山云&quot;,
+  &quot;电讯盈科&quot;,
+  &quot;阿里云&quot;,
+  &quot;华为&quot;,
+  &quot;广电&quot;,
+  &quot;google&quot;,
+  &quot;360&quot;,
+  &quot;蓝汛&quot;
+]</span></div><div class="info-row"><span class="info-label">has_cdn</span><span class="info-value">1</span></div><div class="info-row"><span class="info-label">has_cloud_storage</span><span class="info-value">1</span></div><div class="info-row"><span class="info-label">has_overseas</span><span class="info-value">0</span></div><div class="info-row"><span class="info-label">cdn_servers</span><span class="info-value">[
+  &quot;金山云&quot;,
+  &quot;白山云&quot;,
+  &quot;Amazon&quot;,
+  &quot;网宿&quot;,
+  &quot;verycdn&quot;,
+  &quot;阿里云&quot;,
+  &quot;腾讯云&quot;,
+  &quot;快网&quot;,
+  &quot;云端智度&quot;,
+  &quot;又拍云&quot;,
+  &quot;七牛&quot;,
+  &quot;其他&quot;,
+  &quot;天翼云&quot;,
+  &quot;Akamai&quot;,
+  &quot;360&quot;,
+  &quot;蓝汛&quot;
+]</span></div></div>
+<h3 class="biz-subsection-title">招聘公开线索</h3><div class="info-list"><div class="info-row"><span class="info-label">current</span><span class="info-value">3726</span></div><div class="info-row"><span class="info-label">last_3m</span><span class="info-value">3726</span></div><div class="info-row"><span class="info-label">avg_salary</span><span class="info-value">10073.49323042</span></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>代表性记录</h2><p class="biz-section-note">关键明细记录 Top N。</p></div><span class="biz-tag">Records</span></div><div class="table-wrap"><table><thead><tr><th>维度</th><th>关键记录</th></tr></thead><tbody><tr><td>标讯记录总量</td><td>50（含投标/中标公开记录，不等同采购需求）</td></tr><tr><td>中标标的统计合计</td><td>9（供应方历史中标分布，不能替代买方采购意向）</td></tr><tr><td>当前招聘公开数</td><td>3726（招聘活跃线索，不代表采购计划）</td></tr><tr><td>近三月招聘公开数</td><td>3726（招聘接口口径，需结合采集时点）</td></tr><tr><td>有效域名数</td><td>1427（云资产触点，不代表数字化成熟度或预算）</td></tr><tr><td>舆情统计总量</td><td>5904（接口情感分类合计）</td></tr><tr><td>负面舆情统计</td><td>874（舆情风险线索，不作法律定性）</td></tr></tbody></table></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业商机事实与线索报告</div></div><div class="biz-section-head"><div><h2>特征与洞察</h2><p class="biz-section-note">基于数据的结构化解读。</p></div><span class="biz-tag">Insights</span></div><div class="structural-feature-grid"><article class="structural-feature-card">
+  <h3>中标业绩边界</h3>
+  <p class="structural-evidence">中标标的统计项 5、标讯记录总量 50。</p>
+  <p>仅说明供应方历史市场活动；采购侧统计为空，不能据此宣称该企业存在采购需求。</p>
 </article><article class="structural-feature-card">
-  <h3>产能与经营规模匹配度</h3>
-  <p class="structural-evidence">人员规模 10000人以上、年营业额 10亿以上。</p>
-  <p>建议补充工厂产能与经营规模数据以评估匹配度。</p>
+  <h3>扩张活动交叉线索</h3>
+  <p class="structural-evidence">经营趋势命中 6 项；当前招聘 3726、近三月招聘 3726。</p>
+  <p>经营与招聘两个独立域同时出现活动信号；仅构成扩张观察，不能推定采购预算。</p>
+</article><article class="structural-feature-card">
+  <h3>云资产触点</h3>
+  <p class="structural-evidence">有效域名 1427，云服务器区间 1000台以上。</p>
+  <p>说明存在可观测云资产触点；不能据此评价数字化成熟度、迁移意向或预算。</p>
+</article><article class="structural-feature-card">
+  <h3>负面舆情提示</h3>
+  <p class="structural-evidence">情感统计中负面 874 条，总量 5904 条。</p>
+  <p>应人工复核负面样本、时间和相关性；本报告未查询司法/合规风险，不作信用或法律结论。</p>
 </article></div></section>
     
   </main>
