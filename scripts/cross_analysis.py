@@ -34,13 +34,14 @@ def source_ratio_percent(value: Any) -> Optional[Decimal]:
     text = str(value).strip()
     if not text or text in {"-", "—"}:
         return None
-    if "%" in text:
+    had_percent = "%" in text
+    if had_percent:
         text = text.replace("%", "").strip()
     try:
         number = Decimal(text)
     except InvalidOperation:
         return None
-    if number != 0 and abs(number) <= 1:
+    if not had_percent and number != 0 and abs(number) <= 1:
         number *= 100
     return number
 

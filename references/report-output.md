@@ -1,44 +1,47 @@
-# 融合报告结构规范
+# 商机报告内容规范（direct-mcp 事实版）
 
-## 报告章节（9 章）
+本文件约束默认 direct-mcp 报告的**内容**。默认路径不生成商机分、成交概率、雷达图或评分仪表盘；历史融合路径的评分不得写入本报告。
 
-1. **企业综合画像摘要** — 一句话定位 + 综合评分 + 置信度 + 评估结论
-2. **多维度评分雷达图** — 8 维度信号评分雷达（ECharts radar）
-3. **维度评分详情** — 表格：维度/评分/证据强度/覆盖度/数据来源/关键发现
-4. **工商基础与股权** — 来自 enterprise-report
-5. **创新实力评估** — 来自 patent + trademark + qualification
-6. **市场活跃度** — 来自 bidding + news + exhibition
-7. **风险健康度** — 来自 enterprise-risk
-8. **经营与数字化** — 来自 operation + recruitment + cloudmigration
-9. **综合研判** — 基于评分的结论（全部有数据支撑）
+## 一、章节与字段
 
-## 质量门禁
+1. 查询对象与口径：主体全称、匹配方式、覆盖域、时间、缺口。
+2. 数据总览：只放可追溯事实指标，每个指标带口径提示。
+3. 核心分析：主体/经营/采购中标/舆情/云资产/招聘，按有效数据动态出现；空章节整体跳过。
+4. 代表性记录：来自同报告指标，不重新计算。
+5. 特征与洞察：证据字段 + 解释 + 边界；不把平台记录当采购意向。
+6. 数据口径与来源：MCP 数量、模式、生成时间。
 
-- 如果**所有**维度均无数据 → 拒绝生成报告，报 `QualityGateError`
-- 空维度在雷达图上显示 0 分（视觉可见覆盖缺口）
-- 综合研判只引用有数据的维度，不外推空维度
+## 二、内容整理（原始值 → 标签 → 证据）
 
-### 数据格式约束（铁律）
+| 原始字段 | 规范展示 | 证据位置 | 禁止 |
+| --- | --- | --- | --- |
+| `financingAmount` / `investorList` | 时间、轮次、金额、投资方逐项文本 | `core_analysis.operation.融资记录` | 输出 JSON/引号/大括号 |
+| `win_subjects` / `win_areas` / `win_amounts` | “标的 数量 条，占比 X%” | `core_analysis.bidding` | 合并成“采购需求” |
+| `bidding_total` | 标讯记录总量 | metrics / bidding | 当作中标次数或采购预算 |
+| `sentiment` | 负面/中立/正面/未知分别列示 | `core_analysis.news.情感分布` | 只报正面占比、隐瞒负面 |
+| `cloud_servers` / `cdn_servers` | 去重后逐项列表 | `core_analysis.cloudmigration` | 推断数字化成熟度或迁移意向 |
+| `recruitingCurrentCount` / `recruitingLastThreeMonthCount` | 同值时合并为一个观察并注明窗口不可区分 | metrics / recruitment | 当作两次独立扩张信号 |
+| `recruitingAvgWorkingSalary` | 保留两位小数 + 元/月 | recruitment | 用整数抹掉精度差异后冒充原值 |
+| `is*` 经营趋势标记（值为 `1`） | 逐项中文标签并保留上游字段=1 证据；未收录标签保留原字段并标“未收录标准标签” | `core_analysis.operation.经营趋势命中` | 丢弃未映射命中或为未知标记臆造含义 |
 
-以下约束适用于 compose_report.py 组装数据与 render_report.py 渲染输出的全过程：
+- 数值逐项保留；英文 key 必须转为中文标签。未知值写“未知/未返回”，不得写成 `0`。
+- 经营趋势章节的命中条数必须与洞察“经营趋势命中 N 项”一致；值为 `0` 的标记不是命中，不列入命中清单。
+- 名称不拼接：标的、区域、服务商、榜单名称按上游原值展示，不做同义词合并或主体拼接。
+- 比例保留上游精度；金额统一“X 亿/万 + 币种”；地址按省市区拼接。
 
-1. **嵌套 JSON 字符串必须解析**：MCP 返回的某些字段（如 `regCapital`、`addressValue`、`subscriptionDetail`）可能是 JSON 字符串（例：`{"coinType":"人民币","value":430000000.0}`）。compose 层必须调用 `_unwrap_json_str()` / `_parse_reg_capital()` / `_flatten_addr()` 解析为可读文本（如"4.30 亿 人民币"、"浙江省杭州市滨江区..."）。绝不在报告正文、表格单元格或指标值中输出原始 JSON 字符串。
+## 三、语义审校门禁
 
-2. **section 标题必须用中文**：`core_analysis.sections` 数组中每个 section 的 `title` 字段必须使用中文（如"企业基本信息"、"对外投资"、"股东信息"）。`key` 字段用英文 snake_case 供程序索引，但 `title` 绝不可显示英文 key。即使缺少 sections 数组，渲染器回退逻辑也内置了 `_TITLE_MAP` 映射。
+1. **相关性**：采购/中标数量只说明供应方历史市场活动；招聘、云资产、域名不等于预算或采购计划。
+2. **主题归类**：只有上游字段明确支持时才归入“扩张、采购、数字化、舆情”主题；同义标签合并需两个以上记录或上游明确别名。
+3. **时间口径**：招聘、舆情、标讯注明接口窗口；跨时点数值不得直接相加或比较。
+4. **主体口径**：主体未确认时，所有章节改为“同名检索线索”，指标提示追加“不归属该主体”。
+5. **冲突处理**：上游字段互相矛盾时并列展示并标“待核验”，不擅自取高/取低。
+6. **置信度**：样本/单页数据必须写“样本”“当前展示”或“未纳入条数”，不得冒充全量。
+7. **保留风险**：负面舆情、数据缺口、未查询的司法/合规边界不删除；不得以“未查询”推导“低风险”。
 
-3. **指标值可读化**：所有 `metrics` 的 `value` 字段必须格式化为人类可读形式：
-   - 金额：`10995210218.0` → `109.95 亿 人民币`（≥1 亿用亿，≥1 万用万）
-   - 地址：嵌套 dict → 省+市+区拼接 或取 `value` 字段
-   - 比率：`0.8858` → `88.58%`
-   - 日期：保持 `yyyy-MM-dd` 格式
-   - "-" 表示字段缺失（MCP 未返回）；`0` 表示真实为零
+## 四、离线复核
 
-4. **企业画像指标提取**：有 fuzzy_search 的 skill 必须从返回的 record 中提取 `regCapitalValue` / `foundTime` / `operStatus` / `enterpriseType` / `legalRepresentative`，通过 `_enrich_metrics_with_profile()` 追加为指标卡。
+已冻结报告可用 `compose_direct.apply_content_review(report, calls=None)` 做纯本地整理：
+递归复制报告，将嵌套字段转为中文可读文本，合并同值招聘指标，改写对应洞察证据，逐项保留经营趋势命中（含未收录标签的上游字段），并在 `caliber.limit` 注明“未新增推断”。该函数不调用 MCP，不改变证据文件。
 
-5. **分布派生指标**：`_derive_core_metrics()` 从 core_analysis 各 section 计算分布指标（CR3 集中度、覆盖城市/平台/类目数、价格区间、正面占比等），确保指标总数 M ≥ 6。
-
-## 禁止项
-
-- 不出现 `matchKeyword=`、`product_id`、`secret_id`、工具名
-- 不出现"联网收集""Skill 生成"等过程语言
-- 不臆造空维度的数据或结论
+正常生成 `compose_direct.build_direct_payload`（`compose_fusion_report.py` 默认直连模式）在返回前调用同一函数，JSON/HTML/Markdown 使用同一整理结果；重复调用保持幂等。整理只重算章节填充数并保留构建时声明的章节总数，缺失维度不会被折叠成 100% 覆盖；`data["calls"]` / `_meta["calls"]` 存在时作为既有调用证据传入，不触发二次查询。
